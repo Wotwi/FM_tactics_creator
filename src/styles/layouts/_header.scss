@@ -1,0 +1,35 @@
+.header {
+  width: 100%;
+  height: 6rem;
+  border: 1px solid black;
+  background: rgb(77,37,140);
+  background: linear-gradient(90deg, rgba(77,37,140,1) 0%, rgba(16,6,27,1) 67%);
+  color: rgba(240, 240, 240, .9);
+  font-family: $base-font;
+  font-weight: 600;
+
+  .main__navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 6rem;
+
+    .logo {
+      font-size: 3rem;
+      padding: 3rem;
+      font-weight: 900;
+      color: rgba(240, 240, 240, .9);
+      text-decoration: none;
+    }
+
+    .elements__wrapper {
+      display: flex;
+      align-items: center;
+
+      .nav__element {
+        margin-inline: 5rem;
+        font-size: 2rem;
+      }
+    }
+  }
+}
