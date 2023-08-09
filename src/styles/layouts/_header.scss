@@ -4,7 +4,7 @@
   border: 1px solid black;
   background: rgb(77,37,140);
   background: linear-gradient(90deg, rgba(77,37,140,1) 0%, rgba(16,6,27,1) 67%);
-  color: rgba(240, 240, 240, .9);
+  color: $main-color;
   font-family: $base-font;
   font-weight: 600;
 
