@@ -1,22 +1,29 @@
-import {useState} from "react";
+import {createElement, useState} from "react";
 
 function CreateTactic() {
     const [selectedFormation, setSelectedFormation] = useState('');
 
-    function handleSelectFormation (e) {
-        setSelectedFormation(e.target.value)
+    function handleSelectFormation(e) {
+        setSelectedFormation(e.target.value);
 
         if (e.target.value === "3-5-2") {
-            console.log('wybrałeś 3-5-2');
-            generateElement()
+            generateElement(e.target.value);
         } else if (e.target.value === "4-3-3") {
-            console.log('wybrałeś 4-3-3');
-            generateElement()
+            generateElement(e.target.value);
         }
     }
 
-    function generateElement () {
-        return <h2 className="generator">{selectedFormation}</h2>
+    function generateElement() {
+        const arr = [];
+
+        for (let i = 1; i <= 11; i++) {
+            const element = createElement(
+                'img',
+                { className: `formation-element${[i]}`, src: "src/assets/shirt.png"}
+            );
+            arr.push(element);
+        }
+        return arr;
     }
 
 
@@ -49,7 +56,7 @@ function CreateTactic() {
                             <div className="in-transition option-font">IN TRANSITION</div>
                             <div className="out-of-possession option-font">OUT OF POSSESSION</div>
                         </section>
-                        <section id="pitch" className="pitch">
+                        <section className="pitch">
                             {generateElement()}
                         </section>
                     </main>
