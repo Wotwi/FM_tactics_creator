@@ -87,9 +87,6 @@
 
     .pitch {
       margin-top: 2.5rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       width: 70rem;
       height: 96.8rem;
       background-image: url(../assets/pitch2.svg);
@@ -97,6 +94,7 @@
       background-size: contain;
       background-repeat: no-repeat;
       border-radius: 2rem;
+      position: relative;
     }
   }
 }
@@ -119,4 +117,81 @@
   font-family: $base-font;
   border-radius: 1rem;
   border: none;
+}
+
+.formation-element1 {
+  width: 20%;
+  position: absolute;
+  top: 85rem;
+  left: 28rem;
+}
+
+.formation-element2 {
+  width: 20%;
+  position: absolute;
+  top: 70rem;
+  left: 40rem;
+}
+
+.formation-element3 {
+  width: 20%;
+  position: absolute;
+  top: 70rem;
+  left: 28rem;
+}
+
+.formation-element4 {
+  width: 20%;
+  position: absolute;
+  top: 70rem;
+  left: 16rem;
+}
+
+.formation-element5 {
+  width: 20%;
+  position: absolute;
+  top: 45rem;
+  left: 48rem;
+}
+
+.formation-element6 {
+  width: 20%;
+  position: absolute;
+  top: 45rem;
+  left: 38rem;
+}
+
+.formation-element7 {
+  width: 20%;
+  position: absolute;
+  top: 45rem;
+  left: 28rem;
+}
+
+.formation-element8 {
+  width: 20%;
+  position: absolute;
+  top: 45rem;
+  left: 18rem;
+}
+
+.formation-element9 {
+  width: 20%;
+  position: absolute;
+  top: 45rem;
+  left: 8rem;
+}
+
+.formation-element10 {
+  width: 20%;
+  position: absolute;
+  top: 10rem;
+  left: 20rem
+}
+
+.formation-element11 {
+  width: 20%;
+  position: absolute;
+  top: 10rem;
+  left: 36rem
 }
