@@ -7,21 +7,33 @@ function CreateTactic() {
         setSelectedFormation(e.target.value);
 
         if (e.target.value === "3-5-2") {
-            generateElement(e.target.value);
+            generateElement();
         } else if (e.target.value === "4-3-3") {
-            generateElement(e.target.value);
+            generateElement();
+        } else if (e.target.value === "") {
+            console.log("Wybierz formację")
         }
     }
 
     function generateElement() {
         const arr = [];
 
-        for (let i = 1; i <= 11; i++) {
-            const element = createElement(
-                'img',
-                { className: `formation-element${[i]}`, src: "src/assets/shirt.png"}
-            );
-            arr.push(element);
+        if (selectedFormation === "3-5-2") {
+            for (let i = 1; i <= 11; i++) {
+                const element = createElement(
+                    'img',
+                    { className: `formation-352-${[i]}`, src: "src/assets/shirt3.png"}
+                );
+                arr.push(element);
+            }
+        } else if (selectedFormation === "4-3-3") {
+            for (let i = 1; i <= 11; i++) {
+                const element = createElement(
+                    'img',
+                    { className: `formation-433-${[i]}`, src: "src/assets/shirt3.png"}
+                );
+                arr.push(element);
+            }
         }
         return arr;
     }
@@ -57,7 +69,12 @@ function CreateTactic() {
                             <div className="out-of-possession option-font">OUT OF POSSESSION</div>
                         </section>
                         <section className="pitch">
-                            {generateElement()}
+                            {selectedFormation && (
+                                <div>
+                                    {selectedFormation === '3-5-2' && generateElement()}
+                                    {selectedFormation === '4-3-3' && generateElement()}
+                                </div>
+                            )}
                         </section>
                     </main>
                     <button className="btn">Anuluj</button>
