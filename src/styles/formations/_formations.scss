@@ -1,0 +1,248 @@
+// Formation 3-5-2 -----------------------------------------------------------------------------------------------------
+
+// Defenders
+
+@for $i from 2 through 4 {
+  .formation-352-#{$i} {
+    left: -15rem + 15 * $i;
+    width: 15%;
+    position: absolute;
+    top: 65rem;
+  }
+  .position-352-#{$i} {
+    left: -15rem + 15 * $i;
+    width: 15%;
+    position: absolute;
+    top: 74rem;
+    border: none;
+    //border-radius: 1rem;
+    background-color: $main-color;
+    appearance: none;
+    text-align: center;
+    padding: .2rem;
+    border-radius: 1rem;
+  }
+  .role-352-#{$i} {
+    left: -7.9rem + 15 * $i;
+    width: 5%;
+    position: absolute;
+    top: 74rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: $main-color;
+    appearance: none;
+    text-align: center;
+    padding: .2rem;
+  }
+}
+
+// Midfielders
+
+@for $i from 5 through 9 {
+  .formation-352-#{$i} {
+    left: -54rem + 12 * $i;
+    width: 15%;
+    position: absolute;
+    top: 41rem;
+  }
+  .position-352-#{$i} {
+    left: -54rem + 12 * $i;
+    width: 15%;
+    position: absolute;
+    top: 50rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: $main-color;
+  }
+}
+
+// Forwarders
+
+@for $i from 10 through 11 {
+  .formation-352-#{$i} {
+    width: 15%;
+    position: absolute;
+    top: 10rem;
+    left: -128rem + 15 * $i;
+  }
+  .position-352-#{$i} {
+    width: 15%;
+    position: absolute;
+    top: 19rem;
+    left: -128rem + 15 * $i;
+    border: none;
+    border-radius: 1rem;
+    background-color: $main-color;
+  }
+}
+
+// Goalkeeper
+
+.formation-352-1 {
+  width: 15%;
+  position: absolute;
+  top: 82rem;
+  left: 29.7rem;
+}
+.position-352-1 {
+  width: 15%;
+  position: absolute;
+  top: 82rem + 9;
+  left: 29.7rem;
+  border: none;
+  border-radius: 1rem;
+  background-color: $main-color;
+}
+
+// Formation 4-3-3 -----------------------------------------------------------------------------------------------------
+
+//Defenders
+
+@for $i from 2 through 5 {
+  .formation-433-#{$i} {
+    left: -22.5rem + 15 * $i;
+    width: 15%;
+    position: absolute;
+    top: 65rem;
+  }
+  .position-433-#{$i} {
+    left: -22.5rem + 15 * $i;
+    width: 15%;
+    position: absolute;
+    top: 65rem + 9;
+    border: none;
+    border-radius: 1rem;
+    background-color: $main-color;
+  }
+}
+
+@for $i from 6 through 8 {
+  .formation-433-#{$i} {
+    left: -75.5rem + 15 * $i;
+    width: 15%;
+    position: absolute;
+    top: 40rem;
+  }
+  .position-433-#{$i} {
+    left: -75.5rem + 15 * $i;
+    width: 15%;
+    position: absolute;
+    top: 40rem + 9;
+    border: none;
+    border-radius: 1rem;
+    background-color: $main-color;
+  }
+}
+
+@for $i from 9 through 11 {
+  .formation-433-#{$i} {
+    left: -120.1rem + 15 * $i;
+    width: 15%;
+    position: absolute;
+    top: 10rem;
+  }
+  .position-433-#{$i} {
+    left: -120.1rem + 15 * $i;
+    width: 15%;
+    position: absolute;
+    top: 10rem + 9;
+    border: none;
+    border-radius: 1rem;
+    background-color: $main-color;
+  }
+}
+
+// Goalkeeper
+
+.formation-433-1 {
+  width: 15%;
+  position: absolute;
+  top: 82rem;
+  left: 29.7rem;
+}
+.position-433-1 {
+  width: 15%;
+  position: absolute;
+  top: 82rem + 9;
+  left: 29.7rem;
+  border: none;
+  border-radius: 1rem;
+  background-color: $main-color;
+}
+
+
+// Formation 4-4-2  ----------------------------------------------------------------------------------------------------
+
+//Defenders
+
+@for $i from 2 through 5 {
+  .formation-442-#{$i} {
+    left: -22.5rem + 15 * $i;
+    width: 15%;
+    position: absolute;
+    top: 65rem;
+  }
+  .position-442-#{$i} {
+    left: -22.5rem + 15 * $i;
+    width: 15%;
+    position: absolute;
+    top: 65rem + 9;
+    border: none;
+    border-radius: 1rem;
+    background-color: $main-color;
+  }
+}
+
+@for $i from 6 through 9 {
+  .formation-442-#{$i} {
+    left: -82.5rem + 15 * $i;
+    width: 15%;
+    position: absolute;
+    top: 40rem;
+  }
+  .position-442-#{$i} {
+    left: -82.5rem + 15 * $i;
+    width: 15%;
+    position: absolute;
+    top: 40rem + 9;
+    border: none;
+    border-radius: 1rem;
+    background-color: $main-color;
+  }
+}
+
+@for $i from 10 through 11 {
+  .formation-442-#{$i} {
+    left: -127.7rem + 15 * $i;
+    width: 15%;
+    position: absolute;
+    top: 10rem;
+  }
+  .position-442-#{$i} {
+    left: -127.7rem + 15 * $i;
+    width: 15%;
+    position: absolute;
+    top: 10rem + 9;
+    border: none;
+    border-radius: 1rem;
+    background-color: $main-color;
+  }
+}
+
+// Goalkeeper
+
+.formation-442-1 {
+  width: 15%;
+  position: absolute;
+  top: 82rem;
+  left: 29.7rem;
+}
+.position-442-1 {
+  width: 15%;
+  position: absolute;
+  top: 82rem + 9;
+  left: 29.7rem;
+  border: none;
+  border-radius: 1rem;
+  background-color: $main-color;
+}
