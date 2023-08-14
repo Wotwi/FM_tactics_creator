@@ -11,8 +11,8 @@ function CreateTactic() {
             generateElement();
         } else if (e.target.value === "4-3-3") {
             generateElement();
-        } else if (e.target.value === "") {
-            console.log("Wybierz formację")
+        } else if (e.target.value === "4-4-2") {
+            generateElement();
         }
     }
 
@@ -31,15 +31,32 @@ function CreateTactic() {
                     (() => {
                         if (i === 1) {
                             return [
-                                createElement('option', { value: 'option1', key: 'option1' }, 'Opcja 1'),
-                                createElement('option', { value: 'option2', key: 'option2' }, 'Opcja 2'),
-                                // Dodaj więcej opcji dla pierwszej klasy
+                                createElement('option', { value: "option1"}, "Goalkeeper"),
+                                createElement('option', { value: "option2"}, "Goalkeeper-libero"),
                             ];
-                        } else if (i === 2) {
+                        } else if (i === 2 || i === 3 || i === 4) {
                             return [
-                                createElement('option', {value: 'option3', key: 'option3'}, 'Opcja 3'),
-                                createElement('option', {value: 'option4', key: 'option4'}, 'Opcja 4'),
-                                // Dodaj więcej opcji dla drugiej klasy
+                                createElement('option', {value: "option3"}, "Central Back"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                            ];
+                        } else if (i === 6 || i === 7 || i === 8) {
+                            return [
+                                createElement('option', {value: "option3"}, "Midfielder"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                                createElement('option', {value: "option4"}, "Opcja 4")
+                            ];
+                        } else if (i === 5 || i === 9) {
+                            return [
+                                createElement('option', {value: "option3"}, "Winger"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                                createElement('option', {value: "option4"}, "Opcja 4")
+                            ];
+                        } else if (i === 10 || i === 11) {
+                            return [
+                                createElement('option', {value: "option3"}, "Central Forward"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                                createElement('option', {value: "option4"}, "Opcja 4")
                             ];
                         }
                         return null;
@@ -47,6 +64,7 @@ function CreateTactic() {
                 );
                 arr.push(player, position);
             }
+            return arr;
         } else if (selectedFormation === "4-3-3") {
             for (let i = 1; i <= 11; i++) {
                 const player = createElement(
@@ -59,12 +77,26 @@ function CreateTactic() {
                     (() => {
                         if (i === 1) {
                             return [
-                                createElement('option', {value: 'GK433', key: 'option8'}, "Bramkarz"),
-                                createElement('option', {value: 'GKL433', key: 'option8'}, "Bramkarz-libero")
+                                createElement('option', { value: "option1"}, "Goalkeeper"),
+                                createElement('option', { value: "option2"}, "Goalkeeper-libero"),
                             ];
-                        } else if (i === 2) {
+                        } else if (i === 2 || i === 3 || i === 4) {
                             return [
-                                createElement('option', {value: 'option9', key: 'option9'}, "Option 9")
+                                createElement('option', {value: "option3"}, "Central Defender"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                            ];
+                        } else if (i === 6 || i === 7 || i === 8) {
+                            return [
+                                createElement('option', {value: "option3"}, "Central Midfielder"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                                createElement('option', {value: "option4"}, "Opcja 4")
+                            ];
+                        } else if (i === 9 || i === 10 || i === 11) {
+                            return [
+                                createElement('option', {value: "option3"}, "Advanced Forward"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                                createElement('option', {value: "option4"}, "Opcja 4")
                             ];
                         }
                         return null;
@@ -72,8 +104,53 @@ function CreateTactic() {
                 );
                 arr.push(player, position);
             }
-        }
         return arr;
+    } else if (selectedFormation === "4-4-2") {
+            for (let i = 1; i <= 11; i++) {
+                const player = createElement(
+                    'img',
+                    { className: `formation-442-${[i]}`, src: "src/assets/shirt3.png"}
+                );
+                const position = createElement(
+                    'select',
+                    { className: `position-442-${[i]}` },
+                    (() => {
+                        if (i === 1) {
+                            return [
+                                createElement('option', { value: "option1"}, "Goalkeeper"),
+                                createElement('option', { value: "option2"}, "Goalkeeper-libero"),
+                            ];
+                        } else if (i === 2 || i === 3 || i === 4 || i === 5) {
+                            return [
+                                createElement('option', {value: "option3"}, "Central Defender"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                            ];
+                        } else if (i === 7 || i === 8) {
+                            return [
+                                createElement('option', {value: "option3"}, "Central Midfielder"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                                createElement('option', {value: "option4"}, "Opcja 4")
+                            ];
+                        } else if ( i === 6 || i === 9) {
+                            return [
+                                createElement('option', {value: "option3"}, "Winger"),
+                                createElement('option', {value: "option4"}, "Opcja 4")
+                            ];
+                        } else if (i === 10 || i === 11) {
+                            return [
+                                createElement('option', {value: "option3"}, "Advanced Forward"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                                createElement('option', {value: "option4"}, "Opcja 4")
+                            ];
+                        }
+                        return null;
+                    })()
+                );
+                arr.push(player, position);
+            }
+            return arr;
+        }
     }
 
 
@@ -84,11 +161,12 @@ function CreateTactic() {
                 <span className="tactic__wrapper">
                     <label htmlFor="formations" className="formation">Choose your formation:</label>
                     <select value={selectedFormation} onChange={handleSelectFormation} name="formations" className="formation-select" id="formations">
-                        <option id="option1" className="formation-select__item"></option>
-                        <option id="option2" className="formation-select__item" value="3-5-2">3-5-2</option>
-                        <option id="option3" className="formation-select__item" value="4-2-2-2 DP Wąsko">4-2-2-2 DP Wąsko</option>
-                        <option id="option4" className="formation-select__item" value="4-2-3-1">4-2-3-1</option>
-                        <option id="option5" className="formation-select__item" value="4-3-3">4-3-3</option>
+                        <option className="formation-select__item"></option>
+                        <option className="formation-select__item" value="3-5-2">3-5-2</option>
+                        <option className="formation-select__item" value="4-2-2-2 DP Wąsko">4-2-2-2 DP Wąsko</option>
+                        <option className="formation-select__item" value="4-2-3-1">4-2-3-1</option>
+                        <option className="formation-select__item" value="4-3-3">4-3-3</option>
+                        <option className="formation-select__item" value="4-4-2">4-4-2</option>
                     </select>
                     <main className="tactics">
                         <section className="options">
@@ -107,12 +185,9 @@ function CreateTactic() {
                             <div className="out-of-possession option-font">OUT OF POSSESSION</div>
                         </section>
                         <section className="pitch">
-                            {selectedFormation && (
-                                <div>
                                     {selectedFormation === '3-5-2' && generateElement()}
                                     {selectedFormation === '4-3-3' && generateElement()}
-                                </div>
-                            )}
+                                    {selectedFormation === '4-4-2' && generateElement()}
                         </section>
                     </main>
                     <button className="btn">Anuluj</button>
