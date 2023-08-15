@@ -2,7 +2,7 @@ import {createElement, useState} from "react";
 
 function CreateTactic() {
     const [selectedFormation, setSelectedFormation] = useState('');
-    const [selectedRole, setSelectedRole] = useState('');
+    const [showInPossession, setShowInPossession] = useState(false);
 
     function handleSelectFormation(e) {
         setSelectedFormation(e.target.value);
@@ -153,7 +153,15 @@ function CreateTactic() {
         }
     }
 
+    function openInPossession () {
+        setShowInPossession(true);
+        console.log('opened')
+    };
 
+    function closeInPossession () {
+        setShowInPossession(false);
+        console.log('closed')
+    }
 
     return (
         <>
@@ -180,7 +188,7 @@ function CreateTactic() {
                                 <option value="">very offensive</option>
                             </select>
 
-                            <div className="in-possession option-font">IN POSSESSION</div>
+                            <div className="in-possession option-font" onClick={openInPossession}>IN POSSESSION</div>
                             <div className="in-transition option-font">IN TRANSITION</div>
                             <div className="out-of-possession option-font">OUT OF POSSESSION</div>
                         </section>
@@ -188,6 +196,10 @@ function CreateTactic() {
                                     {selectedFormation === '3-5-2' && generateElement()}
                                     {selectedFormation === '4-3-3' && generateElement()}
                                     {selectedFormation === '4-4-2' && generateElement()}
+
+                                    {showInPossession && <div className="commands-window">
+                                        <button className="close-btn" onClick={closeInPossession}>X</button>
+                                    </div> }
                         </section>
                     </main>
                     <button className="btn">Anuluj</button>
