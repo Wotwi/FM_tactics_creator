@@ -216,7 +216,6 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-
       .options-element {
         border: .1rem solid #008D1F;
         background-color: rgba(0, 77, 64, .6);
@@ -260,6 +259,37 @@
       margin-top: 1rem;
       &:first-child {
         margin: 0 0 .5rem 0;
+      }
+    }
+
+    .final-third-pitch-element {
+      border: .1rem solid #008D1F;
+      background-color: rgba(0, 77, 64, .6);
+      font-family: $base-font;
+      text-align: center;
+      max-height: 33%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      &:nth-child(1) {
+        width: 45%;
+        height: 15%;
+        margin-top: 1.7rem;
+        margin-inline: 4rem;
+      }
+      &:nth-child(2) {
+        width: 21%;
+        height: 27%;
+      }
+      &:nth-child(3) {
+        width: 45%;
+        height: 27%;
+        margin-bottom: 14rem;
+      }
+      &:nth-child(4) {
+        width: 21%;
+        height: 27%;
       }
     }
 

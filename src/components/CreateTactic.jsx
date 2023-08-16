@@ -280,8 +280,11 @@ function CreateTactic() {
                                                 <option value="High Crosses">High Crosses</option>
                                             </select>
 
-                                            <section className="small-pitch">
-
+                                            <section className="small-pitch final-third-pitch">
+                                                <span className="final-third-pitch-element">Work Ball Into Box</span>
+                                                <span className="final-third-pitch-element">Hit Early Crosses</span>
+                                                <span className="final-third-pitch-element">Shoot On Sight</span>
+                                                <span className="final-third-pitch-element">Hit Early Crosses</span>
                                             </section>
                                             <button className="options-btn final-third-btn">Play For Set Pieces</button>
 
