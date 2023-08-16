@@ -123,20 +123,149 @@
   margin-inline: auto;
   margin-top: 10rem;
   width: 95%;
-  height: 50%;
+  height: 60%;
   background-color: #fff;
   border-radius: 2rem;
   position: relative;
+  border: 1rem solid rgb(0, 77, 64);
+  background-color: rgba(0, 125, 63, 1);
+  //background-color: rgba(0, 141, 31, 1);
+  display: flex;
+  align-items: center;
 
   .close-btn {
     width: 2rem;
     font-size: 1.5rem;
     height: 2rem;
-    background-color: rgba(186, 37, 37, .5);
+    background-color: rgba(186, 37, 37, 1);
     border: none;
     position: absolute;
     top: 1rem;
     right: 1rem;
     border-radius: .5rem;
+  }
+
+  .in-possession-part {
+    width: 33%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &:nth-child(2) {
+      border-inline: .2rem solid #fff;
+      border-color: rgb(0, 77, 64);
+    }
+
+    .options-title {
+      font-size: 1.4rem;
+      font-family: $base-font;
+      font-weight: 900;
+      color: #fff;
+      margin-top: .5rem;
+    }
+
+    .options-chosen {
+      font-family: $base-font;
+      font-weight: 300;
+      color: #fff;
+    }
+
+    .range-input {
+      -webkit-appearance: none;
+      background: transparent;
+      cursor: pointer;
+      width: 80%;
+      border: none;
+      margin-top: .5rem;
+    }
+
+    input[type="range"]::-webkit-slider-runnable-track {
+      background: #053a5f;
+      height: 0.5rem;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none; /* Override default look */
+      appearance: none;
+      margin-top: -.3rem; /* Centers thumb on the track */
+      background-color: #5cd5eb;
+      height: 1rem;
+      width: 1rem;
+      border-radius: 50%;
+    }
+
+    .options-btn {
+      width: 90%;
+      height: 3rem;
+      background-color: rgb(0, 77, 64);
+      color: #fff;
+      font-family: $base-font;
+      border: none;
+      border-radius: .7rem;
+    }
+
+    .small-pitch {
+      width: 90%;
+      height: 30rem;
+      margin-top: 1.5rem;
+      background-image: url(../assets/pitch2.svg);
+      background-color: rgb(0, 125, 63);
+      background-size: contain;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      .options-element {
+        border: .1rem solid #008D1F;
+        background-color: rgba(0, 77, 64, .6);
+        font-family: $base-font;
+        text-align: center;
+        max-height: 33%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        @for $i from 1 through 4 {
+          &:nth-child(#{$i}) {
+            width: 21.9%;
+            margin-top: 1.7rem;
+          }
+        }
+        @for $i from 5 through 7 {
+          &:nth-child(#{$i}) {
+            width: 29.7%;
+          }
+        }
+        &:nth-child(8) {
+          width: 91%;
+          margin-bottom: 4.4rem;
+        }
+      }
+    }
+
+    .cross-select {
+      width: 70%;
+      height: 3rem;
+      border-radius: .7rem;
+      text-align: center;
+      background-color: rgb(0, 77, 64);
+      color: #fff;
+      font-family: $base-font;
+      border: none;
+    }
+
+    .final-third-title {
+      margin-top: 1rem;
+      &:first-child {
+        margin: 0 0 .5rem 0;
+      }
+    }
+
+    .final-third-btn {
+      margin-top: .2rem;
+      margin-bottom: .2rem;
+    }
   }
 }

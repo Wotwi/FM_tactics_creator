@@ -4,6 +4,11 @@ function CreateTactic() {
     const [selectedFormation, setSelectedFormation] = useState('');
     const [showInPossession, setShowInPossession] = useState(false);
 
+    const [widthRange, setWidthRange] = useState(2)
+    const [passRange, setPassRange] = useState(2)
+    const [tempoRange, setTempoRange] = useState(2)
+    const [timeWasteRange, setTimeWasteRange] = useState(2)
+
     function handleSelectFormation(e) {
         setSelectedFormation(e.target.value);
 
@@ -155,12 +160,23 @@ function CreateTactic() {
 
     function openInPossession () {
         setShowInPossession(true);
-        console.log('opened')
-    };
+    }
 
     function closeInPossession () {
         setShowInPossession(false);
-        console.log('closed')
+    }
+
+    function handleRange (e) {
+        setWidthRange(parseInt(e.target.value, 10))
+    }
+    function handlePass (e) {
+        setPassRange(parseInt(e.target.value, 10))
+    }
+    function handleTempo (e) {
+        setTempoRange(parseInt(e.target.value, 10))
+    }
+    function handleTimeWaste (e) {
+        setTimeWasteRange(parseInt(e.target.value, 10))
     }
 
     return (
@@ -180,12 +196,12 @@ function CreateTactic() {
                         <section className="options">
                             <label htmlFor="mentality" className="mentality option-font">Mentality</label>
                             <select name="mentality-select" className="mentality-select option-font" id="mentality">
-                                <option value="">very defensive</option>
-                                <option value="">defensive</option>
-                                <option value="">standard</option>
-                                <option value="">positive</option>
-                                <option value="">offensive</option>
-                                <option value="">very offensive</option>
+                                <option value="very defensive">very defensive</option>
+                                <option value="defensive">defensive</option>
+                                <option value="standard">standard</option>
+                                <option value="positive">positive</option>
+                                <option value="offensive">offensive</option>
+                                <option value="very offensive">very offensive</option>
                             </select>
 
                             <div className="in-possession option-font" onClick={openInPossession}>IN POSSESSION</div>
@@ -198,6 +214,85 @@ function CreateTactic() {
                                     {selectedFormation === '4-4-2' && generateElement()}
 
                                     {showInPossession && <div className="commands-window">
+                                        <div className="in-possession-part">
+                                            <h3 className="options-title">ATTACKING WIDTH</h3>
+                                            <p className="options-chosen">
+                                                {widthRange === 0 ? "Very tight" : ""}
+                                                {widthRange === 1 ? "Tight" : ""}
+                                                {widthRange === 2 ? "Standard" : ""}
+                                                {widthRange === 3 ? "Wide" : ""}
+                                                {widthRange === 4 ? "Very wide" : ""}
+                                            </p>
+                                            <input className="range-input" type="range" min="0" max="4" value={widthRange} onChange={handleRange}/>
+                                        </div>
+                                        <div className="in-possession-part">
+                                            <h3 className="options-title">APPROACH PLAY</h3>
+                                            <button className="options-btn">Pass Into Space</button>
+
+                                            <section className="small-pitch">
+                                                <span className="options-element">Overlap Left</span>
+                                                <span className="options-element">Underlap Left</span>
+                                                <span className="options-element">Underlap Right</span>
+                                                <span className="options-element">Overlap Right</span>
+
+                                                <span className="options-element">Focus Play Down The Left</span>
+                                                <span className="options-element">Focus Play Through The Middle</span>
+                                                <span className="options-element">Focus Play Down The Right</span>
+
+                                                <span className="options-element">Play Out Of Defence</span>
+                                            </section>
+
+                                            <h3 className="options-title">PASSING DIRECTNESS</h3>
+                                            <p className="options-chosen">
+                                                {passRange === 0 ? "Very short" : ""}
+                                                {passRange === 1 ? "Short" : ""}
+                                                {passRange === 2 ? "Standard" : ""}
+                                                {passRange === 3 ? "Long" : ""}
+                                                {passRange === 4 ? "Very long" : ""}
+                                            </p>
+                                            <input className="range-input" type="range" min="0" max="4" value={passRange} onChange={handlePass}/>
+
+                                            <h3 className="options-title">TEMPO</h3>
+                                            <p className="options-chosen">
+                                                {tempoRange === 0 ? "V Slow" : ""}
+                                                {tempoRange === 1 ? "Slow" : ""}
+                                                {tempoRange === 2 ? "Standard" : ""}
+                                                {tempoRange === 3 ? "Fast" : ""}
+                                                {tempoRange === 4 ? "V Fast" : ""}
+                                            </p>
+                                            <input className="range-input" type="range" min="0" max="4" value={tempoRange} onChange={handleTempo}/>
+
+                                            <h3 className="options-title">TIME WASTING</h3>
+                                            <p className="options-chosen">
+                                                {timeWasteRange === 0 ? "1" : ""}
+                                                {timeWasteRange === 1 ? "2" : ""}
+                                                {timeWasteRange === 2 ? "Never" : ""}
+                                                {timeWasteRange === 3 ? "4" : ""}
+                                                {timeWasteRange === 4 ? "5" : ""}
+                                            </p>
+                                            <input className="range-input" type="range" min="0" max="4" value={timeWasteRange} onChange={handleTimeWaste}/>
+                                        </div>
+                                        <div className="in-possession-part">
+                                            <h3 className="options-title final-third-title">FINAL THIRD</h3>
+                                            <select className="cross-select" name="" id="">
+                                                <option value="Low Crosses">Low Crosses</option>
+                                                <option value="Medium Crosses">Medium Crosses</option>
+                                                <option value="High Crosses">High Crosses</option>
+                                            </select>
+
+                                            <section className="small-pitch">
+
+                                            </section>
+                                            <button className="options-btn final-third-btn">Play For Set Pieces</button>
+
+                                            <h3 className="options-title final-third-title">DRIBBLING</h3>
+                                            <button className="options-btn final-third-btn">Dribble Less</button>
+                                            <button className="options-btn final-third-btn">Run At Defence</button>
+
+                                            <h3 className="options-title final-third-title">CREATIVE FREEDOM</h3>
+                                            <button className="options-btn final-third-btn">Be More Expressive</button>
+                                            <button className="options-btn final-third-btn">Be More Desciplined</button>
+                                        </div>
                                         <button className="close-btn" onClick={closeInPossession}>X</button>
                                     </div> }
                         </section>
