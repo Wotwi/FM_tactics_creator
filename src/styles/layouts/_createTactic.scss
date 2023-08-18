@@ -365,4 +365,21 @@
       }
     }
   }
+  .oop-section {
+    width: 70%;
+    //flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    &:nth-child(2) {
+      width: 30%;
+    }
+
+    .oop-pitch {
+      width: 50%;
+      margin-bottom: 1.5rem;
+    }
+    .oop-range {
+      width: 50%;
+    }
+  }
 }
