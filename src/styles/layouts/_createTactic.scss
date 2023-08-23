@@ -1,11 +1,13 @@
 @mixin option-window {
   width: 80%;
-  min-height: 4rem;
+  //min-height: 4rem;
   text-align: center;
   border-radius: 1rem;
   background-color: rgba(23, 93, 81, 1);
   padding: 1rem;
   margin: 1rem;
+  //display: flex;
+  //flex-direction: column;
 }
 
 .container {
@@ -382,4 +384,81 @@
       width: 50%;
     }
   }
+}
+
+.displayed-options {
+  font-size: 1rem;
+  letter-spacing: .08rem;
+  display: block;
+  p {
+    margin: .3rem;
+    font-weight: 900;
+    color: rgba(98, 166, 138, .8);
+  }
+}
+
+.options-element-clicked {
+  border: .1rem solid #008D1F;
+  background-color: rgba(19, 219, 105, .7);
+  font-family: $base-font;
+  text-align: center;
+  max-height: 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  @for $i from 1 through 4 {
+    &:nth-child(#{$i}) {
+      width: 21.9%;
+      margin-top: 1.7rem;
+    }
+  }
+  @for $i from 5 through 7 {
+    &:nth-child(#{$i}) {
+      width: 29.7%;
+    }
+  }
+  &:nth-child(8) {
+    width: 91%;
+    margin-bottom: 4.4rem;
+  }
+}
+
+.final-third-pitch-element-clicked {
+  border: .1rem solid #008D1F;
+  background-color: rgba(19, 219, 105, .7);
+  font-family: $base-font;
+  text-align: center;
+  max-height: 33%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  &:nth-child(1) {
+    width: 45%;
+    height: 15%;
+    margin-top: 1.7rem;
+    margin-inline: 4rem;
+  }
+  &:nth-child(2) {
+    width: 21%;
+    height: 27%;
+  }
+  &:nth-child(3) {
+    width: 45%;
+    height: 27%;
+    margin-bottom: 14rem;
+  }
+  &:nth-child(4) {
+    width: 21%;
+    height: 27%;
+  }
+}
+
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
 }
