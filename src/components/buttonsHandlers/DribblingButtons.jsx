@@ -1,27 +1,26 @@
 import React, { useState } from 'react';
 
-function DribblingButtons({ isFirstPressed, setIsFirstPressed, isSecondPressed, setIsSecondPressed }) {
-
+function DribblingButtons({ dribbleLess, setDribbleLess, runAtDefence, setRunAtDefence }) {
 
     const handleFirstToggle = () => {
-        setIsFirstPressed(!isFirstPressed);
-        setIsSecondPressed(false);
+        setDribbleLess(!dribbleLess);
+        setRunAtDefence(false);
     };
     const handleSecondToggle = () => {
-        setIsFirstPressed(false);
-        setIsSecondPressed(!isSecondPressed);
+        setDribbleLess(false);
+        setRunAtDefence(!runAtDefence);
     };
 
     return (
         <>
             <h3 className="options-title final-third-title">DRIBBLING</h3>
 
-            <button className="options-btn final-third-btn" onClick={handleFirstToggle} style={{backgroundColor: isFirstPressed ? '#0DC453' : ''}}>
-                {isFirstPressed ? 'Dribble Less' : 'Dribble Less'}
+            <button className="options-btn final-third-btn" onClick={handleFirstToggle} style={{backgroundColor: dribbleLess ? '#0DC453' : ''}}>
+                {dribbleLess ? 'Dribble Less' : 'Dribble Less'}
             </button>
 
-            <button className="options-btn final-third-btn" onClick={handleSecondToggle} style={{ backgroundColor: isSecondPressed ? '#0DC453' : '' }}>
-                {isSecondPressed ? 'Run At Defence' : 'Run At Defence'}
+            <button className="options-btn final-third-btn" onClick={handleSecondToggle} style={{ backgroundColor: runAtDefence ? '#0DC453' : '' }}>
+                {runAtDefence ? 'Run At Defence' : 'Run At Defence'}
             </button>
         </>
     );
