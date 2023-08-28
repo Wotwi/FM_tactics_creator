@@ -1,4 +1,6 @@
 import {createElement, useState} from "react";
+import DribblingButtons from "./buttonsHandlers/DribblingButtons.jsx";
+import CreativeFreedomButtons from "./buttonsHandlers/CreativeFreedomButtons.jsx";
 
 function CreateTactic() {
     const [selectedFormation, setSelectedFormation] = useState('');
@@ -7,12 +9,41 @@ function CreateTactic() {
     const [showInTransition, setShowInTransition] = useState(false);
     const [showOutOfPossession, setShowOutOfPossession] = useState(false);
 
+    const [approachPlay, setApproachPlay] = useState(false);
+    const [playForSetPieces, setPlayForSetPieces] = useState(false)
+    const [dribbleLess, setDribbleLess] = useState(false);
+    const [isSecondPressed, setIsSecondPressed] = useState(false);
+    const [isMoreExpressive, setIsMoreExpressive] = useState(false);
+    const [IsMoreDisciplined, setIsMoreDisciplined] = useState(false);
+
     const [widthRange, setWidthRange] = useState(2)
     const [passRange, setPassRange] = useState(2)
     const [tempoRange, setTempoRange] = useState(2)
-    const [timeWasteRange, setTimeWasteRange] = useState(2)
+    const [timeWasteRange, setTimeWasteRange] = useState(0)
     const [defensiveWidthRange, setDefensiveWidthRange] = useState(1)
     const [triggerPressRange, setTriggerPressRange] = useState(2)
+
+     const [playOptionStates, setPlayOptionStates] = useState({
+         playOutDef: false,
+         playDownLeft: false,
+         playThroughMiddle: false,
+         playDownRight: false,
+         overlapLeft: false,
+         underlapLeft: false,
+         underlapRight: false,
+         overlapRight: false,
+
+         hitEarlyCrosses: false,
+         shootOnSight: false,
+         ballIntoBox: false,
+     })
+
+    const handleElementClick = (element) => {
+        setPlayOptionStates((prevStates) => ({
+            ...prevStates,
+            [element]: !prevStates[element],
+        }));
+    };
 
     function handleSelectFormation(e) {
         setSelectedFormation(e.target.value);
@@ -211,6 +242,61 @@ function CreateTactic() {
         setTriggerPressRange(parseInt(e.target.value, 10))
     }
 
+    const widthRangeLabels = (
+        <>
+            {widthRange === 0 ? "Very tight" : ""}
+            {widthRange === 1 ? "Tight" : ""}
+            {widthRange === 2 ? "" : ""}
+            {widthRange === 3 ? "Wide" : ""}
+            {widthRange === 4 ? "Very wide" : ""}
+        </>
+    );
+
+    const approachPlayHandle = () => {
+        setApproachPlay(!approachPlay);
+        console.log(approachPlay);
+    }
+
+    const setPieces = () => {
+        setPlayForSetPieces(!playForSetPieces);
+        console.log(playForSetPieces);
+    }
+
+    const passRangeLabels = (
+        <>
+            {passRange === 0 ? "Very short" : ""}
+            {passRange === 1 ? "Short" : ""}
+            {passRange === 2 ? "" : ""}
+            {passRange === 3 ? "Long" : ""}
+            {passRange === 4 ? "Very long" : ""}
+        </>
+    );
+
+    const tempoRangeLabels = (
+        <>
+            {tempoRange === 0 ? "V Slow" : ""}
+            {tempoRange === 1 ? "Slow" : ""}
+            {tempoRange === 2 ? "" : ""}
+            {tempoRange === 3 ? "Fast" : ""}
+            {tempoRange === 4 ? "V Fast" : ""}
+        </>
+    );
+
+    const timeWasteRangeLabels = (
+        <>
+            {timeWasteRange === 0 ? "" : ""}
+            {timeWasteRange === 1 ? "Waste Time Sometimes" : ""}
+            {timeWasteRange === 2 ? "Waste Time Whenever" : ""}
+        </>
+    );
+
+    const handleLeftLap = (clickedOption) => {
+        setPlayOptionStates((prevState) => ({
+            overlapLeft: prevState.overlapLeft === false && clickedOption === 'overlapLeft',
+            underlapLeft: prevState.underlapLeft === false && clickedOption === 'underlapLeft',
+        }));
+    };
+
     return (
         <>
             <div className="container">
@@ -237,12 +323,43 @@ function CreateTactic() {
                                 <option value="very offensive">very offensive</option>
                             </select>
 
-                            <div className="in-possession option-font" onClick={openInPossession}>IN POSSESSION</div>
-                            <div className="in-transition option-font" onClick={openInTransition}>IN TRANSITION</div>
-                            <div className="out-of-possession option-font" onClick={openOutOfPossession}>OUT OF POSSESSION</div>
+                            <div className="in-possession option-font" onClick={openInPossession}>
+                                <h3 className="options-title">IN POSSESSION</h3>
+                                <span className="displayed-options">
+                                    <p>{widthRangeLabels}</p>
+                                    <p>{approachPlay && "Approach Play"}</p>
+                                    <p>{passRangeLabels}</p>
+                                    <p>{tempoRangeLabels}</p>
+                                    <p>{timeWasteRangeLabels}</p>
+                                    <p>{playForSetPieces && "Play For Set Pieces"}</p>
+                                    <p>{dribbleLess && "Dribble Less"}</p>
+                                    <p>{isSecondPressed && "Run At Defence"}</p>
+                                    <p>{isMoreExpressive && "Be More Expressive"}</p>
+                                    <p>{IsMoreDisciplined && "Be More Disciplined"}</p>
+
+                                    <p>{playOptionStates.playOutDef && "Play Out Def"}</p>
+                                    <p>{playOptionStates.playDownLeft && "Play Down Left"}</p>
+                                    <p>{playOptionStates.playThroughMiddle && "Play Through Middle"}</p>
+                                    <p>{playOptionStates.playDownRight && "Play Down Right"}</p>
+                                    <p>{playOptionStates.overlapLeft && "Over Lap Left"}</p>
+                                    <p>{playOptionStates.underlapLeft && "Under Lap Left"}</p>
+                                    <p>{playOptionStates.underlapRight && "Under Lap Right"}</p>
+                                    <p>{playOptionStates.overlapRight && "Over Lap Right"}</p>
+
+                                    <p>{playOptionStates.hitEarlyCrosses && "Hit Early Crosses"}</p>
+                                    <p>{playOptionStates.shootOnSight && "Shoot On Sight"}</p>
+                                    <p>{playOptionStates.ballIntoBox && "Ball Into Box"}</p>
+                                </span>
+                            </div>
+                            <div className="in-transition option-font" onClick={openInTransition}>
+                                <h3>IN TRANSITION</h3>
+                            </div>
+                            <div className="out-of-possession option-font" onClick={openOutOfPossession}>
+                                <h3>OUT OF POSSESSION</h3>
+                            </div>
                         </section>
                         <section className="pitch">
-                                    {selectedFormation === '3-5-2' && generateElement()}
+                            {selectedFormation === '3-5-2' && generateElement()}
                             {selectedFormation === '4-3-3' && generateElement()}
                             {selectedFormation === '4-4-2' && generateElement()}
 
@@ -261,19 +378,27 @@ function CreateTactic() {
                                 </div>
                                 <div className="options-section">
                                     <h3 className="options-title">APPROACH PLAY</h3>
-                                    <button className="options-btn">Pass Into Space</button>
+                                    <button className="options-btn" onClick={approachPlayHandle} style={{backgroundColor: approachPlay ? '#0DC453' : ''}}>
+                                        Approach Play
+                                    </button>
 
                                     <section className="small-pitch">
-                                        <span className="options-element">Overlap Left</span>
-                                        <span className="options-element">Underlap Left</span>
-                                        <span className="options-element">Underlap Right</span>
-                                        <span className="options-element">Overlap Right</span>
+                                        <span
+                                            className={playOptionStates.overlapLeft ? 'options-element-clicked' : 'options-element'}
+                                            onClick={() => handleLeftLap('overlapLeft') && handleElementClick('overlapLeft')}>Overlap Left
+                                        </span>
+                                        <span
+                                            className={playOptionStates.underlapLeft ? 'options-element-clicked' : 'options-element'}
+                                            onClick={() => handleLeftLap('underlapLeft') && handleElementClick('underlapLeft')}>Underlap Left
+                                        </span>
+                                        <span className={playOptionStates.underlapRight ? 'options-element-clicked' : 'options-element'} onClick={() => handleElementClick('underlapRight')}>Underlap Right</span>
+                                        <span className={playOptionStates.overlapRight ? 'options-element-clicked' : 'options-element'} onClick={() => handleElementClick('overlapRight')}>Overlap Right</span>
 
-                                        <span className="options-element">Focus Play Down The Left</span>
-                                        <span className="options-element">Focus Play Through The Middle</span>
-                                        <span className="options-element">Focus Play Down The Right</span>
+                                        <span className={playOptionStates.playDownLeft ? 'options-element-clicked' : 'options-element'} onClick={() => handleElementClick('playDownLeft')}>Focus Play Down The Left</span>
+                                        <span className={playOptionStates.playThroughMiddle ? 'options-element-clicked' : 'options-element'} onClick={() => handleElementClick('playThroughMiddle')}>Focus Play Through The Middle</span>
+                                        <span className={playOptionStates.playDownRight ? 'options-element-clicked' : 'options-element'} onClick={() => handleElementClick('playDownRight')}>Focus Play Down The Right</span>
 
-                                        <span className="options-element">Play Out Of Defence</span>
+                                        <span className={playOptionStates.playOutDef ? 'options-element-clicked' : 'options-element'} onClick={() => handleElementClick('playOutDef')}>Play Out Of Defence</span>
                                     </section>
 
                                     <h3 className="options-title">PASSING DIRECTNESS</h3>
@@ -300,14 +425,11 @@ function CreateTactic() {
 
                                     <h3 className="options-title">TIME WASTING</h3>
                                     <p className="options-chosen">
-                                        {timeWasteRange === 0 ? "1" : ""}
-                                        {timeWasteRange === 1 ? "2" : ""}
-                                        {timeWasteRange === 2 ? "Never" : ""}
-                                        {timeWasteRange === 3 ? "4" : ""}
-                                        {timeWasteRange === 4 ? "5" : ""}
+                                        {timeWasteRange === 0 ? "Never" : ""}
+                                        {timeWasteRange === 1 ? "Waste Time Sometimes" : ""}
+                                        {timeWasteRange === 2 ? "Waste Time Whenever" : ""}
                                     </p>
-                                    <input className="range-input" type="range" min="0" max="4" value={timeWasteRange}
-                                           onChange={handleTimeWaste}/>
+                                    <input className="range-input" type="range" min="0" max="2" value={timeWasteRange} onChange={handleTimeWaste}/>
                                 </div>
                                 <div className="options-section">
                                     <h3 className="options-title final-third-title">FINAL THIRD</h3>
@@ -318,20 +440,28 @@ function CreateTactic() {
                                     </select>
 
                                     <section className="small-pitch final-third-pitch">
-                                        <span className="final-third-pitch-element">Work Ball Into Box</span>
-                                        <span className="final-third-pitch-element">Hit Early Crosses</span>
-                                        <span className="final-third-pitch-element">Shoot On Sight</span>
-                                        <span className="final-third-pitch-element">Hit Early Crosses</span>
+                                        <span className={playOptionStates.ballIntoBox ? 'final-third-pitch-element-clicked' : 'final-third-pitch-element'} onClick={() => handleElementClick('ballIntoBox')}>Work Ball Into Box</span>
+                                        <span className={playOptionStates.hitEarlyCrosses ? 'final-third-pitch-element-clicked' : 'final-third-pitch-element'} onClick={() => handleElementClick('hitEarlyCrosses')}>Hit Early Crosses</span>
+                                        <span className={playOptionStates.shootOnSight ? 'final-third-pitch-element-clicked' : 'final-third-pitch-element'} onClick={() => handleElementClick('shootOnSight')}>Shoot On Sight</span>
+                                        <span className={playOptionStates.hitEarlyCrosses ? 'final-third-pitch-element-clicked' : 'final-third-pitch-element'} onClick={() => handleElementClick('hitEarlyCrosses')}>Hit Early Crosses</span>
                                     </section>
-                                    <button className="options-btn final-third-btn">Play For Set Pieces</button>
+                                    <button className="options-btn final-third-btn" onClick={setPieces} style={{backgroundColor: playForSetPieces ? '#0DC453' : ''}}>
+                                        Play For Set Pieces
+                                    </button>
 
-                                    <h3 className="options-title final-third-title">DRIBBLING</h3>
-                                    <button className="options-btn final-third-btn">Dribble Less</button>
-                                    <button className="options-btn final-third-btn">Run At Defence</button>
+                                    <DribblingButtons
+                                        dribbleLess={dribbleLess}
+                                        setDribbleLess={setDribbleLess}
+                                        runAtDefence={isSecondPressed}
+                                        setRunAtDefence={setIsSecondPressed}
+                                    />
 
-                                    <h3 className="options-title final-third-title">CREATIVE FREEDOM</h3>
-                                    <button className="options-btn final-third-btn">Be More Expressive</button>
-                                    <button className="options-btn final-third-btn">Be More Desciplined</button>
+                                    <CreativeFreedomButtons
+                                        isMoreExpressive={isMoreExpressive}
+                                        setIsMoreExpressive={setIsMoreExpressive}
+                                        isMoreDesciplined={IsMoreDisciplined}
+                                        setIsMoreDesciplined={setIsMoreDisciplined}
+                                    />
                                 </div>
                                 <button className="close-btn" onClick={closeInPossession}>X</button>
                             </div>}
