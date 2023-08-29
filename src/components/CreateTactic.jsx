@@ -24,21 +24,18 @@ function CreateTactic() {
     const [triggerPressRange, setTriggerPressRange] = useState(2)
 
      const [playOptionStates, setPlayOptionStates] = useState({
-         playOutDef: false,
-         playDownLeft: false,
-         playThroughMiddle: false,
-         playDownRight: false,
-         overlapLeft: false,
-         underlapLeft: false,
-         underlapRight: false,
-         overlapRight: false,
 
-         hitEarlyCrosses: false,
-         shootOnSight: false,
-         ballIntoBox: false,
+
+
      })
 
     const [playOutDef, setPlayOutDef] = useState(false);
+
+    const [secondLineOptions, setSecondLineOptions] = useState({
+        playDownLeft: false,
+        playThroughMiddle: false,
+        playDownRight: false,
+    })
 
     const [leftLapStates, setLeftLapStates] = useState({
         overlapLeft: false,
@@ -50,12 +47,11 @@ function CreateTactic() {
         underlapRight: false,
     });
 
-    const handleElementClick = (element) => {
-        setPlayOptionStates((prevStates) => ({
-            ...prevStates,
-            [element]: !prevStates[element],
-        }));
-    };
+    const [finishing, setFinishing] = useState({
+        hitEarlyCrosses: false,
+        shootOnSight: false,
+        ballIntoBox: false,
+    })
 
     function handleSelectFormation(e) {
         setSelectedFormation(e.target.value);
@@ -68,6 +64,13 @@ function CreateTactic() {
             generateElement();
         }
     }
+
+    const handleElementClick = (element) => {
+        setPlayOptionStates((prevStates) => ({
+            ...prevStates,
+            [element]: !prevStates[element],
+        }));
+    };
 
     function generateElement() {
         const arr = [];
@@ -302,6 +305,19 @@ function CreateTactic() {
         </>
     );
 
+    const handlePlayOutDef = () => {
+        setPlayOutDef(false);
+        setPlayOutDef(!playOutDef);
+    }
+
+    const handleMiddle = (clickedOption) => {
+        setSecondLineOptions((prevState) => ({
+            playDownLeft: (clickedOption === 'playDownLeft' && !prevState.playDownLeft) || (clickedOption === 'playDownRight' && prevState.playDownLeft) ? true : false,
+            playThroughMiddle: clickedOption === 'playThroughMiddle' && !prevState.playThroughMiddle,
+            playDownRight: (clickedOption === 'playDownRight' && !prevState.playDownRight) || (clickedOption === 'playDownLeft' && prevState.playDownRight) ? true : false,
+        }));
+    };
+
     const handleLeftLap = (clickedOption) => {
         setLeftLapStates((prevState) => ({
             ...prevState,
@@ -309,11 +325,6 @@ function CreateTactic() {
             underlapLeft: prevState.underlapLeft === false && clickedOption === 'underlapLeft',
         }));
     };
-
-    const handlePlayOutDef = () => {
-        setPlayOutDef(false);
-        setPlayOutDef(!playOutDef);
-    }
 
     const handleRightLap = (clickedOption) => {
         setRightLapStates((prevState) => ({
@@ -364,10 +375,9 @@ function CreateTactic() {
                                     <p>{IsMoreDisciplined && "Be More Disciplined"}</p>
 
                                     <p>{playOutDef && "Play Out Def"}</p>
-
-                                    <p>{playOptionStates.playDownLeft && "Play Down Left"}</p>
-                                    <p>{playOptionStates.playThroughMiddle && "Play Through Middle"}</p>
-                                    <p>{playOptionStates.playDownRight && "Play Down Right"}</p>
+                                    <p>{secondLineOptions.playDownLeft && "Play Down Left"}</p>
+                                    <p>{secondLineOptions.playThroughMiddle && "Play Through Middle"}</p>
+                                    <p>{secondLineOptions.playDownRight && "Play Down Right"}</p>
                                     <p>{leftLapStates.overlapLeft && "Over Lap Left"}</p>
                                     <p>{leftLapStates.underlapLeft && "Under Lap Left"}</p>
                                     <p>{rightLapStates.underlapRight && "Under Lap Right"}</p>
@@ -418,12 +428,27 @@ function CreateTactic() {
                                             className={leftLapStates.underlapLeft ? 'options-element-clicked' : 'options-element'}
                                             onClick={() => handleLeftLap('underlapLeft') && handleElementClick('underlapLeft')}>Underlap Left
                                         </span>
-                                        <span className={rightLapStates.underlapRight ? 'options-element-clicked' : 'options-element'} onClick={() => handleRightLap('underlapRight') && handleElementClick('underlapRight')}>Underlap Right</span>
-                                        <span className={rightLapStates.overlapRight ? 'options-element-clicked' : 'options-element'} onClick={() => handleRightLap('overlapRight') && handleElementClick('overlapRight')}>Overlap Right</span>
+                                        <span
+                                            className={rightLapStates.underlapRight ? 'options-element-clicked' : 'options-element'}
+                                            onClick={() => handleRightLap('underlapRight') && handleElementClick('underlapRight')}>Underlap Right
+                                        </span>
+                                        <span
+                                            className={rightLapStates.overlapRight ? 'options-element-clicked' : 'options-element'}
+                                            onClick={() => handleRightLap('overlapRight') && handleElementClick('overlapRight')}>Overlap Right
+                                        </span>
 
-                                        <span className={playOptionStates.playDownLeft ? 'options-element-clicked' : 'options-element'} onClick={() => handleElementClick('playDownLeft')}>Focus Play Down The Left</span>
-                                        <span className={playOptionStates.playThroughMiddle ? 'options-element-clicked' : 'options-element'} onClick={() => handleElementClick('playThroughMiddle')}>Focus Play Through The Middle</span>
-                                        <span className={playOptionStates.playDownRight ? 'options-element-clicked' : 'options-element'} onClick={() => handleElementClick('playDownRight')}>Focus Play Down The Right</span>
+                                        <span
+                                            className={secondLineOptions.playDownLeft ? 'options-element-clicked' : 'options-element'}
+                                            onClick={() => handleMiddle('playDownLeft') && handleElementClick('playDownLeft')}>Focus Play Down The Left
+                                        </span>
+                                        <span
+                                            className={secondLineOptions.playThroughMiddle ? 'options-element-clicked' : 'options-element'}
+                                            onClick={() => handleMiddle('playThroughMiddle') && handleElementClick('playThroughMiddle')}>Focus Play Through The Middle
+                                        </span>
+                                        <span
+                                            className={secondLineOptions.playDownRight ? 'options-element-clicked' : 'options-element'}
+                                            onClick={() => handleMiddle('playDownRight') && handleElementClick('playDownRight')}>Focus Play Down The Right
+                                        </span>
 
                                         <span
                                             className={playOutDef ? 'options-element-clicked' : 'options-element'}
