@@ -334,6 +334,14 @@ function CreateTactic() {
         }));
     };
 
+    const handleFinishing = (clickedOption) => {
+        setFinishing((prevState) => ({
+            shootOnSight: (clickedOption === 'shootOnSight' && !prevState.shootOnSight) || (clickedOption === 'hitEarlyCrosses' && prevState.shootOnSight) ? true : false,
+            ballIntoBox: clickedOption === 'ballIntoBox' && !prevState.ballIntoBox,
+            hitEarlyCrosses: (clickedOption === 'hitEarlyCrosses' && !prevState.hitEarlyCrosses) || (clickedOption === 'shootOnSight' && prevState.hitEarlyCrosses) ? true : false,
+        }));
+    };
+
     return (
         <>
             <div className="container">
@@ -383,9 +391,9 @@ function CreateTactic() {
                                     <p>{rightLapStates.underlapRight && "Under Lap Right"}</p>
                                     <p>{rightLapStates.overlapRight && "Over Lap Right"}</p>
 
-                                    <p>{playOptionStates.hitEarlyCrosses && "Hit Early Crosses"}</p>
-                                    <p>{playOptionStates.shootOnSight && "Shoot On Sight"}</p>
-                                    <p>{playOptionStates.ballIntoBox && "Ball Into Box"}</p>
+                                    <p>{finishing.hitEarlyCrosses && "Hit Early Crosses"}</p>
+                                    <p>{finishing.shootOnSight && "Shoot On Sight"}</p>
+                                    <p>{finishing.ballIntoBox && "Ball Into Box"}</p>
                                 </span>
                             </div>
                             <div className="in-transition option-font" onClick={openInTransition}>
@@ -495,10 +503,22 @@ function CreateTactic() {
                                     </select>
 
                                     <section className="small-pitch final-third-pitch">
-                                        <span className={playOptionStates.ballIntoBox ? 'final-third-pitch-element-clicked' : 'final-third-pitch-element'} onClick={() => handleElementClick('ballIntoBox')}>Work Ball Into Box</span>
-                                        <span className={playOptionStates.hitEarlyCrosses ? 'final-third-pitch-element-clicked' : 'final-third-pitch-element'} onClick={() => handleElementClick('hitEarlyCrosses')}>Hit Early Crosses</span>
-                                        <span className={playOptionStates.shootOnSight ? 'final-third-pitch-element-clicked' : 'final-third-pitch-element'} onClick={() => handleElementClick('shootOnSight')}>Shoot On Sight</span>
-                                        <span className={playOptionStates.hitEarlyCrosses ? 'final-third-pitch-element-clicked' : 'final-third-pitch-element'} onClick={() => handleElementClick('hitEarlyCrosses')}>Hit Early Crosses</span>
+                                        <span
+                                            className={finishing.ballIntoBox ? 'final-third-pitch-element-clicked' : 'final-third-pitch-element'}
+                                            onClick={() => handleFinishing('ballIntoBox') &&  handleElementClick('ballIntoBox')}>Work Ball Into Box
+                                        </span>
+                                        <span
+                                            className={finishing.hitEarlyCrosses ? 'final-third-pitch-element-clicked' : 'final-third-pitch-element'}
+                                            onClick={() => handleFinishing('hitEarlyCrosses') && handleElementClick('hitEarlyCrosses')}>Hit Early Crosses
+                                        </span>
+                                        <span
+                                            className={finishing.shootOnSight ? 'final-third-pitch-element-clicked' : 'final-third-pitch-element'}
+                                            onClick={() => handleFinishing('shootOnSight') && handleElementClick('shootOnSight')}>Shoot On Sight
+                                        </span>
+                                        <span
+                                            className={finishing.hitEarlyCrosses ? 'final-third-pitch-element-clicked' : 'final-third-pitch-element'}
+                                            onClick={() => handleFinishing('hitEarlyCrosses') && handleElementClick('hitEarlyCrosses')}>Hit Early Crosses
+                                        </span>
                                     </section>
                                     <button className="options-btn final-third-btn" onClick={setPieces} style={{backgroundColor: playForSetPieces ? '#0DC453' : ''}}>
                                         Play For Set Pieces
