@@ -207,6 +207,16 @@
       border-radius: .7rem;
     }
 
+    .options-btn-active {
+      width: 90%;
+      height: 3rem;
+      background-color: #0DC453;
+      color: #fff;
+      font-family: $base-font;
+      border: none;
+      border-radius: .7rem;
+    }
+
     .small-pitch {
       width: 90%;
       height: 30rem;
@@ -379,6 +389,7 @@
     .oop-pitch {
       width: 50%;
       margin-bottom: 1.5rem;
+      position: relative;
     }
     .oop-range {
       width: 50%;
@@ -455,10 +466,104 @@
   }
 }
 
-.red {
-  background-color: red;
+.arrow-outside0 {
+  width: 10%;
+  height: 10%;
+  position: absolute;
+  left: 5rem;
+  top: 25rem;
 }
 
-.green {
-  background-color: green;
+.arrow-outside1 {
+  width: 10%;
+  height: 10%;
+  position: absolute;
+  left: 5rem;
+  top: 20rem;
+}
+
+.arrow-outside2 {
+  width: 10%;
+  height: 10%;
+  position: absolute;
+  left: 5rem;
+  top: 15rem;
+}
+
+.arrow-outside3 {
+  width: 10%;
+  height: 10%;
+  transform: rotate(180deg);
+  position: absolute;
+  right: 6.2rem;
+  top: 25rem;
+}
+
+.arrow-outside4 {
+  width: 10%;
+  height: 10%;
+  transform: rotate(180deg);
+  position: absolute;
+  right: 6.2rem;
+  top: 20rem;
+}
+
+.arrow-outside5 {
+  width: 10%;
+  height: 10%;
+  transform: rotate(180deg);
+  position: absolute;
+  right: 6.2rem;
+  top: 15rem;
+}
+
+.arrow-inside0 {
+  width: 10%;
+  height: 10%;
+  transform: rotate(180deg);
+  position: absolute;
+  left: 5rem;
+  top: 25rem;
+}
+
+.arrow-inside1 {
+  width: 10%;
+  height: 10%;
+  transform: rotate(180deg);
+  position: absolute;
+  left: 5rem;
+  top: 20rem;
+}
+
+.arrow-inside2 {
+  width: 10%;
+  height: 10%;
+  transform: rotate(180deg);
+  position: absolute;
+  left: 5rem;
+  top: 15rem;
+}
+
+.arrow-inside3 {
+  width: 10%;
+  height: 10%;
+  position: absolute;
+  right: 6.2rem;
+  top: 25rem;
+}
+
+.arrow-inside4 {
+  width: 10%;
+  height: 10%;
+  position: absolute;
+  right: 6.2rem;
+  top: 20rem;
+}
+
+.arrow-inside5 {
+  width: 10%;
+  height: 10%;
+  position: absolute;
+  right: 6.2rem;
+  top: 15rem;
 }
