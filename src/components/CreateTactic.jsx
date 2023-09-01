@@ -1,4 +1,4 @@
-import {createElement, useState} from "react";
+import {createElement, useContext, useState} from "react";
 import InTransition from "./InTransition.jsx";
 import InPossession from "./InPossession.jsx";
 import OutOfPossession from "./OutOfPossession.jsx";
@@ -24,13 +24,68 @@ function CreateTactic() {
     const [defensiveWidthRange, setDefensiveWidthRange] = useState(1)
     const [triggerPressRange, setTriggerPressRange] = useState(2)
 
-     const [playOptionStates, setPlayOptionStates] = useState({
-
-
-
-     })
+    const [playOptionStates, setPlayOptionStates] = useState({})
 
     const [playOutDef, setPlayOutDef] = useState(false);
+
+    // InTransition
+
+    const [counterPress, setCounterPress] = useState(false);
+    const [regroup, setRegroup] = useState(false);
+
+    const handleCounterPress = () => {
+        setCounterPress(!counterPress);
+        setRegroup(false);
+    }
+
+    const handleRegroup = () => {
+        setRegroup(!regroup);
+        setCounterPress(false);
+    }
+
+    const [counter, setCounter] = useState(false);
+    const [holdShape, setHoldShape] = useState(false);
+
+    const handleCounter = () => {
+        setCounter(!counter);
+        setHoldShape(false);
+    }
+
+    const handleHoldShape = () => {
+        setHoldShape(!holdShape);
+        setCounter(false);
+    }
+
+    const [distributeQuickly, setDistributeQuickly] = useState(false);
+    const [slowPaceDown, setSlowPaceDown] = useState(false);
+
+    const [distributionType, setDistributionType] = useState({
+        rollItOut: false,
+        throwItLong: false,
+        takeShortKicks: false,
+        takeLongKicks: false,
+    })
+
+    const handleDistributeQuickly = () => {
+        setDistributeQuickly(!distributeQuickly);
+        setSlowPaceDown(false);
+    }
+
+    const handleSlowPaceDown = () => {
+        setSlowPaceDown(!slowPaceDown);
+        setDistributeQuickly(false);
+    }
+
+    const handleDistributionType = (clickedOption) => {
+        setDistributionType((prevState) => ({
+            rollItOut: (clickedOption === 'rollItOut' ? !prevState.rollItOut : false),
+            throwItLong: (clickedOption === 'throwItLong' ? !prevState.throwItLong : false),
+            takeShortKicks: (clickedOption === 'takeShortKicks' ? !prevState.takeShortKicks : false),
+            takeLongKicks: (clickedOption === 'takeLongKicks' ? !prevState.takeLongKicks : false),
+        }));
+    };
+
+    // End of InTransition
 
     const [secondLineOptions, setSecondLineOptions] = useState({
         playDownLeft: false,
@@ -399,6 +454,18 @@ function CreateTactic() {
                             </div>
                             <div className="in-transition option-font" onClick={openInTransition}>
                                 <h3>IN TRANSITION</h3>
+                                <span className="displayed-options">
+                                    <p>{counterPress && "Counter Press"}</p>
+                                    <p>{regroup && "Regroup"}</p>
+                                    <p>{counter && "Counter"}</p>
+                                    <p>{holdShape && "Hold Shape"}</p>
+                                    <p>{distributeQuickly && "Distribute Quickly"}</p>
+                                    <p>{slowPaceDown && "Slow Pace Down"}</p>
+                                    <p>{distributionType.rollItOut && "Roll It Out"}</p>
+                                    <p>{distributionType.throwItLong && "Throw It Long"}</p>
+                                    <p>{distributionType.takeShortKicks && "Take Short Kicks"}</p>
+                                    <p>{distributionType.takeLongKicks && "Take Long Kicks"}</p>
+                                </span>
                             </div>
                             <div className="out-of-possession option-font" onClick={openOutOfPossession}>
                                 <h3>OUT OF POSSESSION</h3>
@@ -447,6 +514,23 @@ function CreateTactic() {
                             <InTransition
                                 showInTransition={showInTransition}
                                 closeInTransition={closeInTransition}
+                                counterPress={counterPress}
+                                regroup={regroup}
+                                handleCounterPress={handleCounterPress}
+                                handleRegroup={handleRegroup}
+                                handleCounter={handleCounter}
+                                handleHoldShape={handleHoldShape}
+                                distributeQuickly={distributeQuickly}
+                                setDistributeQuickly={setDistributeQuickly}
+                                slowPaceDown={slowPaceDown}
+                                setSlowPaceDown={setSlowPaceDown}
+                                distributionType={distributionType}
+                                setDistributionType={setDistributionType}
+                                counter={counter}
+                                holdShape={holdShape}
+                                handleDistributeQuickly={handleDistributeQuickly}
+                                handleSlowPaceDown={handleSlowPaceDown}
+                                handleDistributionType={handleDistributionType}
                             />
 
                             <OutOfPossession

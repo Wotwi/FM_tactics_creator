@@ -1,61 +1,6 @@
-import React, {useState} from 'react';
+import React, {createContext, useState} from 'react';
 
-function InTransition({showInTransition, closeInTransition}) {
-
-    const [counterPress, setCounterPress] = useState(false);
-    const [regroup, setRegroup] = useState(false);
-
-    const [counter, setCounter] = useState(false);
-    const [holdShape, setHoldShape] = useState(false);
-
-    const [distributeQuickly, setDistributeQuickly] = useState(false);
-    const [slowPaceDown, setSlowPaceDown] = useState(false);
-
-    const [distributionType, setDistributionType] = useState({
-        rollItOut: false,
-        throwItLong: false,
-        takeShortKicks: false,
-        takeLongKicks: false,
-    })
-
-    const handleCounterPress = () => {
-        setCounterPress(!counterPress);
-        setRegroup(false);
-    }
-
-    const handleRegroup = () => {
-        setRegroup(!regroup);
-        setCounterPress(false);
-    }
-
-    const handleCounter = () => {
-        setCounter(!counter);
-        setHoldShape(false);
-    }
-
-    const handleHoldShape = () => {
-        setHoldShape(!holdShape);
-        setCounter(false);
-    }
-
-    const handleDistributeQuickly = () => {
-        setDistributeQuickly(!distributeQuickly);
-        setSlowPaceDown(false);
-    }
-
-    const handleSlowPaceDown = () => {
-        setSlowPaceDown(!slowPaceDown);
-        setDistributeQuickly(false);
-    }
-
-    const handleDistributionType = (clickedOption) => {
-        setDistributionType((prevState) => ({
-            rollItOut: (clickedOption === 'rollItOut' ? !prevState.rollItOut : false),
-            throwItLong: (clickedOption === 'throwItLong' ? !prevState.throwItLong : false),
-            takeShortKicks: (clickedOption === 'takeShortKicks' ? !prevState.takeShortKicks : false),
-            takeLongKicks: (clickedOption === 'takeLongKicks' ? !prevState.takeLongKicks : false),
-        }));
-    };
+function InTransition({showInTransition, closeInTransition, counterPress, regroup, handleCounterPress, counter, holdShape, handleRegroup, handleCounter, handleHoldShape, distributeQuickly, setDistributeQuickly, slowPaceDown,  setSlowPaceDown, distributionType, setDistributionType, handleDistributeQuickly, handleSlowPaceDown, handleDistributionType}) {
 
     return (
         <>
