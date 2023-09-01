@@ -1,54 +1,6 @@
 import {createElement, useState} from "react";
 
-function OutOfPossession({showOutOfPossession, defensiveWidthRange, triggerPressRange, closeOutOfPossession, handleDefensiveWidth, handleTriggerPress}) {
-
-    const [tighterMarking, setTighterMarking] = useState(false);
-
-    const [preventShortGK, setPreventShortGK] = useState(false);
-
-    const [stayOnFeet, setStayOnFeet] = useState(false);
-    const [getStuckIn, setGetStuckIn] = useState(false);
-
-    const handleTighterMarking = () => {
-        setTighterMarking(!tighterMarking);
-    }
-
-    const handlePreventShortGK = () => {
-        setPreventShortGK(!preventShortGK);
-    }
-
-    const handleStayOnFeet = () => {
-        setStayOnFeet(!stayOnFeet);
-        setGetStuckIn(false);
-    }
-
-    const handleGetOnStuck = () => {
-        setGetStuckIn(!getStuckIn);
-        setStayOnFeet(false);
-    }
-
-    const generateArrows = () => {
-        const arrows = [];
-
-        if (defensiveWidthRange === 0) {
-            for (let i = 0; i <= 5; i++) {
-                const defensiveShape = createElement(
-                    'img',
-                    {className: `arrow-outside${i}`, src: "src/assets/arrow.png"}
-                )
-                arrows.push(defensiveShape);
-            }
-        } else if (defensiveWidthRange === 2) {
-            for (let i = 0; i <= 5; i++) {
-                const defensiveShape = createElement(
-                    'img',
-                    {className: `arrow-inside${i}`, src: "src/assets/arrow.png"}
-                )
-                arrows.push(defensiveShape);
-            }
-        }
-        return arrows;
-    }
+function OutOfPossession({showOutOfPossession, defensiveWidthRange, triggerPressRange, closeOutOfPossession, handleDefensiveWidth, handleTriggerPress, tighterMarking, setTighterMarking, preventShortGK, setPreventShortGK, stayOnFeet, setStayOnFeet, getStuckIn, setGetStuckIn, handleTighterMarking, handlePreventShortGK, handleStayOnFeet, handleGetOnStuck, generateArrows}) {
 
     return (
         <>
@@ -85,7 +37,7 @@ function OutOfPossession({showOutOfPossession, defensiveWidthRange, triggerPress
 
                     <h3 className="options-title">TACKLING</h3>
                     <button className={stayOnFeet ? 'options-btn-active final-third-btn' : 'options-btn final-third-btn'} onClick={handleStayOnFeet}>Stay On Feet</button>
-                    <button className={getStuckIn ? 'options-btn-active final-third-btn' : 'options-btn final-third-btn'} onClick={handleGetOnStuck}>Get Stuck It</button>
+                    <button className={getStuckIn ? 'options-btn-active final-third-btn' : 'options-btn final-third-btn'} onClick={handleGetOnStuck}>Get Stuck In</button>
                 </div>
                 <button className="close-btn" onClick={closeOutOfPossession}>X</button>
             </div>}

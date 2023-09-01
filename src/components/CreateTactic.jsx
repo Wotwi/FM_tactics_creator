@@ -87,6 +87,58 @@ function CreateTactic() {
 
     // End of InTransition
 
+    // OutOfPossession States
+
+    const [tighterMarking, setTighterMarking] = useState(false);
+
+    const [preventShortGK, setPreventShortGK] = useState(false);
+
+    const [stayOnFeet, setStayOnFeet] = useState(false);
+    const [getStuckIn, setGetStuckIn] = useState(false);
+
+    const handleTighterMarking = () => {
+        setTighterMarking(!tighterMarking);
+    }
+
+    const handlePreventShortGK = () => {
+        setPreventShortGK(!preventShortGK);
+    }
+
+    const handleStayOnFeet = () => {
+        setStayOnFeet(!stayOnFeet);
+        setGetStuckIn(false);
+    }
+
+    const handleGetOnStuck = () => {
+        setGetStuckIn(!getStuckIn);
+        setStayOnFeet(false);
+    }
+
+    const generateArrows = () => {
+        const arrows = [];
+
+        if (defensiveWidthRange === 0) {
+            for (let i = 0; i <= 5; i++) {
+                const defensiveShape = createElement(
+                    'img',
+                    {className: `arrow-outside${i}`, src: "src/assets/arrow.png"}
+                )
+                arrows.push(defensiveShape);
+            }
+        } else if (defensiveWidthRange === 2) {
+            for (let i = 0; i <= 5; i++) {
+                const defensiveShape = createElement(
+                    'img',
+                    {className: `arrow-inside${i}`, src: "src/assets/arrow.png"}
+                )
+                arrows.push(defensiveShape);
+            }
+        }
+        return arrows;
+    }
+
+    // End of OutOfPossession
+
     const [secondLineOptions, setSecondLineOptions] = useState({
         playDownLeft: false,
         playThroughMiddle: false,
@@ -469,6 +521,17 @@ function CreateTactic() {
                             </div>
                             <div className="out-of-possession option-font" onClick={openOutOfPossession}>
                                 <h3>OUT OF POSSESSION</h3>
+                                <p>{tighterMarking && "Tighter Marking"}</p>
+                                <p>{triggerPressRange === 0 && "Much Less Often"}</p>
+                                <p>{triggerPressRange === 1 && "Slightly Less Often"}</p>
+                                <p>{triggerPressRange === 2 && "Slightly More Often"}</p>
+                                <p>{triggerPressRange === 3 && "More Often"}</p>
+                                <p>{triggerPressRange === 4 && "Much More Often"}</p>
+                                <p>{preventShortGK && "Prevent Short GK Distribution"}</p>
+                                <p>{stayOnFeet && "Stay On Feet"}</p>
+                                <p>{getStuckIn && "Get Stuck In"}</p>
+                                <p>{}</p>
+                                <p>{}</p>
                             </div>
                         </section>
                         <section className="pitch">
@@ -540,6 +603,20 @@ function CreateTactic() {
                                 closeOutOfPossession={closeOutOfPossession}
                                 handleDefensiveWidth={handleDefensiveWidth}
                                 handleTriggerPress={handleTriggerPress}
+
+                                tighterMarking={tighterMarking}
+                                setTighterMarking={setTighterMarking}
+                                preventShortGK={preventShortGK}
+                                setPreventShortGK={setPreventShortGK}
+                                stayOnFeet={stayOnFeet}
+                                setStayOnFeet={setStayOnFeet}
+                                getStuckIn={getStuckIn}
+                                setGetStuckIn={setGetStuckIn}
+                                handleTighterMarking={handleTighterMarking}
+                                handlePreventShortGK={handlePreventShortGK}
+                                handleStayOnFeet={handleStayOnFeet}
+                                handleGetOnStuck={handleGetOnStuck}
+                                generateArrows={generateArrows}
                             />
                         </section>
                     </main>
