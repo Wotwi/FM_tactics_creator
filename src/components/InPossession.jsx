@@ -100,10 +100,10 @@ function InPossession({showInPossession, widthRange, handleRange, approachPlayHa
                     </select>
 
                     <section className="small-pitch final-third-pitch">
-                                        <span
-                                            className={finishing.ballIntoBox ? 'final-third-pitch-element-clicked' : 'final-third-pitch-element'}
-                                            onClick={() => handleFinishing('ballIntoBox') &&  handleElementClick('ballIntoBox')}>Work Ball Into Box
-                                        </span>
+                        <span
+                            className={finishing.ballIntoBox ? 'final-third-pitch-element-clicked' : 'final-third-pitch-element'}
+                            onClick={() => handleFinishing('ballIntoBox') &&  handleElementClick('ballIntoBox')}>Work Ball Into Box
+                        </span>
                         <span
                             className={finishing.hitEarlyCrosses ? 'final-third-pitch-element-clicked' : 'final-third-pitch-element'}
                             onClick={() => handleFinishing('hitEarlyCrosses') && handleElementClick('hitEarlyCrosses')}>Hit Early Crosses

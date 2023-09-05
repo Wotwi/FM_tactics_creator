@@ -524,13 +524,14 @@ function CreateTactic() {
                                 <p>{tighterMarking && "Tighter Marking"}</p>
                                 <p>{triggerPressRange === 0 && "Much Less Often"}</p>
                                 <p>{triggerPressRange === 1 && "Slightly Less Often"}</p>
-                                <p>{triggerPressRange === 2 && "Slightly More Often"}</p>
+                                <p>{triggerPressRange === 2 && ""}</p>
                                 <p>{triggerPressRange === 3 && "More Often"}</p>
                                 <p>{triggerPressRange === 4 && "Much More Often"}</p>
                                 <p>{preventShortGK && "Prevent Short GK Distribution"}</p>
                                 <p>{stayOnFeet && "Stay On Feet"}</p>
                                 <p>{getStuckIn && "Get Stuck In"}</p>
-                                <p>{}</p>
+                                <p>{defensiveWidthRange === 0 && "Force Opposition Outside"}</p>
+                                <p>{defensiveWidthRange === 2 && "Force Opposition Inside"}</p>
                                 <p>{}</p>
                             </div>
                         </section>
