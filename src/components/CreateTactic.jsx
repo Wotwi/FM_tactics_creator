@@ -1,4 +1,4 @@
-import {createElement, useContext, useState} from "react";
+import {createElement, useState} from "react";
 import InTransition from "./InTransition.jsx";
 import InPossession from "./InPossession.jsx";
 import OutOfPossession from "./OutOfPossession.jsx";
@@ -622,7 +622,7 @@ function CreateTactic() {
                         </section>
                     </main>
                     <button className="btn">Anuluj</button>
-                    <button className="btn">Zapisz</button>
+                    <button className="btn" onClick={handleSave}>Zapisz</button>
                 </span>
             </div>
         </>
