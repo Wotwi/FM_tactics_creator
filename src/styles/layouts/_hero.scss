@@ -1,0 +1,23 @@
+.hero__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.hero__header {
+  font-size: 5rem;
+  font-family: $base-font;
+  color: $main-color;
+  text-shadow: 4px 4px 6px rgba(0, 0, 0, 1);
+}
+
+.hero__content {
+  width: 100rem;
+  font-size: 3rem;
+  font-family: $base-font;
+  color: $main-color;
+  text-shadow: 4px 4px 6px rgba(0, 0, 0, 1);
+  padding: 5rem;
+  text-align: center;
+}
