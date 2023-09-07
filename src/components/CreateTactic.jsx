@@ -1,4 +1,4 @@
-import {createElement, useState} from "react";
+import {createElement, useState, useEffect} from "react";
 import InTransition from "./InTransition.jsx";
 import InPossession from "./InPossession.jsx";
 import OutOfPossession from "./OutOfPossession.jsx";
@@ -450,6 +450,12 @@ function CreateTactic() {
         }));
     };
 
+    useEffect(() => {
+        console.log(
+            approachPlay, playForSetPieces, dribbleLess, isSecondPressed, isMoreExpressive, IsMoreDisciplined, widthRange, passRange, tempoRange, timeWasteRange, defensiveWidthRange, triggerPressRange, playOutDef
+        )
+    });
+
     return (
         <>
             <div className="container">
@@ -622,7 +628,7 @@ function CreateTactic() {
                         </section>
                     </main>
                     <button className="btn">Anuluj</button>
-                    <button className="btn" onClick={handleSave}>Zapisz</button>
+                    <button className="btn">Zapisz</button>
                 </span>
             </div>
         </>

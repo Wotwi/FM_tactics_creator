@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 function Header() {
     return (
@@ -7,8 +8,8 @@ function Header() {
                 <nav className="main__navigation">
                     <a className="logo" href="/">FM Tactics Creator</a>
                     <span className="elements__wrapper">
-                        <p className="nav__element">Create tactic</p>
-                        <p className="nav__element">All tactics</p>
+                        <a href="/create" className="nav__element">Create tactic</a>
+                        <a href="/alltactics" className="nav__element">All tactics</a>
                         <p className="nav__element">Your tactics</p>
                         <span className="account">
                             <p className="nav__element">Login</p>
