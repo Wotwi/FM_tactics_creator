@@ -21,3 +21,26 @@
   padding: 5rem;
   text-align: center;
 }
+
+.features {
+  font-size: 2rem;
+  font-family: $base-font;
+  color: $main-color;
+  padding-top: 5rem;
+  padding-bottom: 2rem;
+  text-shadow: 4px 4px 6px rgba(0, 0, 0, 1);
+}
+
+.features-element {
+  font-size: 1.8rem;
+  color: $main-color;
+  margin-left: 6rem;
+}
+
+.features-ul {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  list-style-type: circle;
+}
