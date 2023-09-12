@@ -12,8 +12,8 @@ function Header() {
                         <a href="/alltactics" className="nav__element">All tactics</a>
                         <p className="nav__element">Your tactics</p>
                         <span className="account">
-                            <p className="nav__element">Login</p>
-                            <p className="nav__element">Register</p>
+                            <a href="/login" className="nav__element">Login</a>
+                            <a href="/register" className="nav__element">Register</a>
                         </span>
                     </span>
                 </nav>
