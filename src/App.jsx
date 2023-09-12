@@ -3,6 +3,8 @@ import CreateTactic from "./components/CreateTactic.jsx";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Hero from "./components/Hero.jsx";
 import AllTactics from "./components/AllTactics.jsx";
+import Login from "./components/Login.jsx";
+import Register from "./components/Register.jsx";
 
 function App() {
   return (
@@ -16,8 +18,14 @@ function App() {
                 <Route path="/create">
                     <CreateTactic />
                 </Route>
-                <Route exact path="/alltactics">
+                <Route path="/alltactics">
                     <AllTactics />
+                </Route>
+                <Route path="/login">
+                    <Login />
+                </Route>
+                <Route path="/register">
+                    <Register />
                 </Route>
             </Switch>
         </Router>
