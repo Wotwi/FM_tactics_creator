@@ -35,3 +35,12 @@
     }
   }
 }
+
+.logout__button {
+  width: 9rem;
+  margin-left: 13rem;
+  border: none;
+  background:rgba(77,37,140,1);
+  font-family: $base-font;
+  color: $main-color;
+}
