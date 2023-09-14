@@ -1,0 +1,43 @@
+.login__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    // flex-wrap: wrap;
+    padding: 20rem;
+}
+
+.login__title {
+    font-family: $base-font;
+    color: $main-color;
+    font-size: 4rem;
+    margin-inline: 100%;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 1);
+}
+
+.login__text {
+    width: 25%;
+    height: 3rem;
+    margin: 2rem;
+    background-color: $main-color;
+    color: black;
+    border-radius: .5rem;
+}
+
+.login__btn {
+    width: 10rem;
+    height: 3rem;
+    margin-inline: 40%;
+    font-family: $base-font;
+    color: black;
+    border-radius: .5rem;
+}
+
+.login__note {
+    color: $main-color;
+    font-family: $base-font;
+    margin-inline: 40%;
+    font-size: 1.5rem;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 1);
+    margin-top: 1rem;
+}
