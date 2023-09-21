@@ -2,6 +2,10 @@ import {createElement, useState, useEffect} from "react";
 import InTransition from "./InTransition.jsx";
 import InPossession from "./InPossession.jsx";
 import OutOfPossession from "./OutOfPossession.jsx";
+import SaveTactic from "./SaveTactic.jsx";
+import { useHistory } from "react-router-dom";
+import {db} from '../../firebase-config';
+import {collection, getDocs, addDoc} from 'firebase/firestore';
 
 function CreateTactic() {
     const [selectedFormation, setSelectedFormation] = useState('');
@@ -9,6 +13,7 @@ function CreateTactic() {
     const [showInPossession, setShowInPossession] = useState(false);
     const [showInTransition, setShowInTransition] = useState(false);
     const [showOutOfPossession, setShowOutOfPossession] = useState(false);
+    const [showSaveTactic, setShowSaveTactic] = useState(false);
 
     const [approachPlay, setApproachPlay] = useState(false);
     const [playForSetPieces, setPlayForSetPieces] = useState(false)
@@ -449,12 +454,36 @@ function CreateTactic() {
             hitEarlyCrosses: (clickedOption === 'hitEarlyCrosses' && !prevState.hitEarlyCrosses) || (clickedOption === 'shootOnSight' && prevState.hitEarlyCrosses) ? true : false,
         }));
     };
+    
+    //  save and cancel buttons handle
 
-    useEffect(() => {
-        console.log(
-            approachPlay, playForSetPieces, dribbleLess, isSecondPressed, isMoreExpressive, IsMoreDisciplined, widthRange, passRange, tempoRange, timeWasteRange, defensiveWidthRange, triggerPressRange, playOutDef
-        )
-    });
+    const [tacticTitle, setTacticTitle] = useState('');
+    const [tacticDescription, setTacticDescription] = useState('');
+
+    function openSaveTactic() {
+        setShowSaveTactic(true);
+    }
+
+    function closeSaveTactic() {
+        setShowSaveTactic(false);
+    }
+
+    let history = useHistory();
+    const tacticsCollectionRef = collection(db, "tactics")
+
+    const backToHero = () => {
+        history.push('/')
+    }
+
+    const saveTactic = async () => {
+        await addDoc(tacticsCollectionRef, {
+            title: tacticTitle,
+            description: tacticDescription,
+            formation: selectedFormation,
+        })
+        console.log(tacticTitle, tacticDescription)
+        history.push('/alltactics')
+    }
 
     return (
         <>
@@ -625,10 +654,18 @@ function CreateTactic() {
                                 handleGetOnStuck={handleGetOnStuck}
                                 generateArrows={generateArrows}
                             />
+
+                            <SaveTactic
+                                showSaveTactic={showSaveTactic}
+                                closeSaveTactic={closeSaveTactic}
+                                setTacticTitle={setTacticTitle}
+                                setTacticDescription={setTacticDescription}
+                                saveTactic={saveTactic}
+                            />
                         </section>
                     </main>
-                    <button className="btn">Anuluj</button>
-                    <button className="btn">Zapisz</button>
+                    <button className="btn" onClick={backToHero}>Cancel</button>
+                    <button className="btn" onClick={openSaveTactic}>Save</button>
                 </span>
             </div>
         </>

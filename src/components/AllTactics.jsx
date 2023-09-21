@@ -1,28 +1,35 @@
 import React, {useState, useEffect} from 'react';
+import {db} from '../../firebase-config';
+import {collection, getDocs} from 'firebase/firestore';
 
 function AllTactics(props) {
-    const [data, setData] = useState([]);
+    const [tactics, setTactics] = useState([]);
+    const tacticsCollectionRef = collection(db, "tactics")
 
     useEffect(() => {
-        fetch('http://localhost:3000/tactics')
-        .then(response => response.json())
-        .then(data => setData(data))
-        .catch(error => console.error('Error', error))
+        const getTactics = async () => {
+            const data = await getDocs(tacticsCollectionRef)
+            setTactics(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+        };
+
+        getTactics();
     }, [])
 
     return (
         <>
-            {data.map(item => (
-                <div className='all__tactics__wrapper'>
-                    <article className='single__tactic' key={item.key}>
-                        <p className='tactic__formation'>{item.formation}</p>
-                        <span>
-                            <h4 className='tactic__title'>{item.title}</h4>
-                            <p className='tactic__body'>{item.body}</p>
-                        </span>
-                    </article>
-                </div>
-            ))}
+            {tactics.map((tactic) => {
+                return (
+                    <section className="all__tactics__wrapper">
+                        <article className='single__tactic'>
+                            <p className='tactic__formation'>{tactic.formation}</p>
+                            <span>
+                                <h4 className='tactic__title'>{tactic.title}</h4>
+                                <p className='tactic__body'>{tactic.description}</p>                            
+                            </span>
+                        </article>
+                    </section>
+                );
+            })}
         </>
     )
 }

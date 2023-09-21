@@ -174,7 +174,7 @@
     }
 
     .range-input {
-      -webkit-appearance: none;
+      // -webkit-appearance: none;
       background: transparent;
       cursor: pointer;
       width: 80%;
@@ -566,4 +566,51 @@
   position: absolute;
   right: 6.2rem;
   top: 15rem;
+}
+
+// save tactic window
+
+.save__tactic__window {
+  width: 70%;
+  height: 30rem;
+  background: linear-gradient(90deg, rgba(77,37,140,1) 0%, rgba(16,6,27,1) 67%);
+  box-shadow: 0px 6px 22px 0px rgba(0,0,0,0.75);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20rem;
+  position: relative;
+  left: 10rem;
+  border-radius: 1rem;
+
+  .tactic__label {
+    font-size: 2rem;
+    font-family: $base-font;
+    color: $main-color;
+  }
+  .tactic__title {
+    width: 80%;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    color: black;
+    font-size: 2rem;
+    font-family: $base-font;
+  }
+  .tactic__description {
+    width: 80%;
+    height: 15rem;
+    border-radius: 1rem;
+    color: black;
+    font-size: 2rem;
+    font-family: $base-font;
+  }
+  .save__tactic__btn-wrapper {
+    margin-top: 1rem;
+
+    .save__tactic__btn {
+      margin-inline: 1rem;
+    }
+  }
+
 }
