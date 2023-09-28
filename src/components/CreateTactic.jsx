@@ -7,6 +7,8 @@ import { useHistory } from "react-router-dom";
 import {db} from '../../firebase-config';
 import {collection, getDocs, addDoc} from 'firebase/firestore';
 import TacticView from "./TacticView.jsx";
+import shirt3 from "../assets/shirt3.png";
+import arrow1 from "../assets/arrow.png";
 
 function CreateTactic() {
     const [selectedFormation, setSelectedFormation] = useState('');
@@ -139,7 +141,7 @@ function CreateTactic() {
             for (let i = 0; i <= 5; i++) {
                 const defensiveShape = createElement(
                     'img',
-                    {className: `arrow-outside${i}`, src: "src/assets/arrow.png"}
+                    {className: `arrow-outside${i}`, src: arrow1}
                 )
                 arrows.push(defensiveShape);
             }
@@ -147,7 +149,7 @@ function CreateTactic() {
             for (let i = 0; i <= 5; i++) {
                 const defensiveShape = createElement(
                     'img',
-                    {className: `arrow-inside${i}`, src: "src/assets/arrow.png"}
+                    {className: `arrow-inside${i}`, src: arrow1}
                 )
                 arrows.push(defensiveShape);
             }
@@ -205,7 +207,7 @@ function CreateTactic() {
             for (let i = 1; i <= 11; i++) {
                 const player = createElement(
                     'img',
-                    {className: `formation-352-${[i]}`, src: "src/assets/shirt3.png"}
+                    {className: `formation-352-${[i]}`, src: shirt3}
                 );
                 const position = createElement(
                     'select',
@@ -251,7 +253,7 @@ function CreateTactic() {
             for (let i = 1; i <= 11; i++) {
                 const player = createElement(
                     'img',
-                    {className: `formation-433-${[i]}`, src: "src/assets/shirt3.png"}
+                    {className: `formation-433-${[i]}`, src: shirt3}
                 );
                 const position = createElement(
                     'select',
@@ -291,7 +293,7 @@ function CreateTactic() {
             for (let i = 1; i <= 11; i++) {
                 const player = createElement(
                     'img',
-                    {className: `formation-442-${[i]}`, src: "src/assets/shirt3.png"}
+                    {className: `formation-442-${[i]}`, src: shirt3}
                 );
                 const position = createElement(
                     'select',
