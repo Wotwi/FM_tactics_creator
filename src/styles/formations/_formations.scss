@@ -252,3 +252,115 @@
   border-radius: 1rem;
   background-color: $main-color;
 }
+
+
+// Formation 4-2-3-1 -----------------------------------------------------------------------------------------------------
+
+@for $i from 2 through 5 {
+  .formation-4231-#{$i} {
+    left: -22.5rem + 15 * $i;
+    width: 15%;
+    position: absolute;
+    top: 65rem;
+  }
+  .position-4231-#{$i} {
+    left: -22.5rem + 15 * $i;
+    width: 15%;
+    position: absolute;
+    top: 65rem + 9;
+    border: none;
+    border-radius: 1rem;
+    background-color: $main-color;
+  }
+}
+
+@for $i from 6 through 7 {
+  .formation-4231-#{$i} {
+    left: -100rem + 20 * $i;
+    width: 15%;
+    position: absolute;
+    top: 40rem;
+  }
+  .position-4231-#{$i} {
+    left: -100rem + 20 * $i;
+    width: 15%;
+    position: absolute;
+    top: 40rem + 9;
+    border: none;
+    border-radius: 1rem;
+    background-color: $main-color;
+  }
+}
+
+@for $i from 8 through 8 {
+  .formation-4231-#{$i} {
+    left: -90rem + 15 * $i;
+    width: 15%;
+    position: absolute;
+    top: 25rem;
+  }
+  .position-4231-#{$i} {
+    left: -90rem + 15 * $i;
+    width: 15%;
+    position: absolute;
+    top: 25rem + 9;
+    border: none;
+    border-radius: 1rem;
+    background-color: $main-color;
+  }
+}
+
+@for $i from 9 through 10 {
+  .formation-4231-#{$i} {
+    left: -445rem + 50 * $i;
+    width: 15%;
+    position: absolute;
+    top: 25rem;
+  }
+  .position-4231-#{$i} {
+    left: -445rem + 50 * $i;
+    width: 15%;
+    position: absolute;
+    top: 25rem + 9;
+    border: none;
+    border-radius: 1rem;
+    background-color: $main-color;
+  }
+}
+
+@for $i from 11 through 11 {
+  .formation-4231-#{$i} {
+    left: -102rem + 12 * $i;
+    width: 15%;
+    position: absolute;
+    top: 7rem;
+  }
+  .position-4231-#{$i} {
+    left: -102rem + 12 * $i;
+    width: 15%;
+    position: absolute;
+    top: 7rem + 9;
+    border: none;
+    border-radius: 1rem;
+    background-color: $main-color;
+  }
+}
+
+
+// Goalkeeper
+
+.formation-4231-1 {
+  width: 15%;
+  position: absolute;
+  top: 82rem;
+  left: 29.7rem;
+}
+.position-4231-1 {
+  width: 15%;
+  position: absolute;
+  top: 82rem + 9;
+  left: 29.7rem;
+  border: none;
+  border-radius: 1rem;
+  background-color: $main-color;
+}
