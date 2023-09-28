@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { createElement, useEffect, useState } from 'react';
 import { db } from '../../firebase-config';
 import { doc, collection, getDoc, getDocs, getFirestore } from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
+import shirt3 from "../assets/shirt3.png";
 
 function TacticView({ selectedFormation }) {
 
@@ -25,13 +26,208 @@ function TacticView({ selectedFormation }) {
         return <div>Loading...</div>;
     }
 
+    function generateElement() {
+        const arr = [];
+
+        if (tactic.formation === "3-5-2") {
+            for (let i = 1; i <= 11; i++) {
+                const player = createElement(
+                    'img',
+                    {className: `formation-352-${[i]}`, src: shirt3}
+                );
+                const position = createElement(
+                    'select',
+                    {className: `position-352-${[i]}`},
+                    (() => {
+                        if (i === 1) {
+                            return [
+                                createElement('option', {value: "option1"}, "Goalkeeper"),
+                                createElement('option', {value: "option2"}, "Goalkeeper-libero"),
+                            ];
+                        } else if (i === 2 || i === 3 || i === 4) {
+                            return [
+                                createElement('option', {value: "option3"}, "Central Back"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                            ];
+                        } else if (i === 6 || i === 7 || i === 8) {
+                            return [
+                                createElement('option', {value: "option3"}, "Midfielder"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                                createElement('option', {value: "option4"}, "Opcja 4")
+                            ];
+                        } else if (i === 5 || i === 9) {
+                            return [
+                                createElement('option', {value: "option3"}, "Winger"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                                createElement('option', {value: "option4"}, "Opcja 4")
+                            ];
+                        } else if (i === 10 || i === 11) {
+                            return [
+                                createElement('option', {value: "option3"}, "Advanced Forward"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                                createElement('option', {value: "option4"}, "Opcja 4")
+                            ];
+                        }
+                        return null;
+                    })()
+                );
+                arr.push(player, position);
+            }
+            return arr;
+        } else if (tactic.formation === "4-3-3") {
+            for (let i = 1; i <= 11; i++) {
+                const player = createElement(
+                    'img',
+                    {className: `formation-433-${[i]}`, src: shirt3}
+                );
+                const position = createElement(
+                    'select',
+                    {className: `position-433-${[i]}`},
+                    (() => {
+                        if (i === 1) {
+                            return [
+                                createElement('option', {value: "option1"}, "Goalkeeper"),
+                                createElement('option', {value: "option2"}, "Goalkeeper-libero"),
+                            ];
+                        } else if (i === 2 || i === 3 || i === 4) {
+                            return [
+                                createElement('option', {value: "option3"}, "Central Defender"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                            ];
+                        } else if (i === 6 || i === 7 || i === 8) {
+                            return [
+                                createElement('option', {value: "option3"}, "Central Midfielder"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                                createElement('option', {value: "option4"}, "Opcja 4")
+                            ];
+                        } else if (i === 9 || i === 10 || i === 11) {
+                            return [
+                                createElement('option', {value: "option3"}, "Advanced Forward"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                                createElement('option', {value: "option4"}, "Opcja 4")
+                            ];
+                        }
+                        return null;
+                    })()
+                );
+                arr.push(player, position);
+            }
+            return arr;
+        } else if (tactic.formation === "4-4-2") {
+            for (let i = 1; i <= 11; i++) {
+                const player = createElement(
+                    'img',
+                    {className: `formation-442-${[i]}`, src: shirt3}
+                );
+                const position = createElement(
+                    'select',
+                    {className: `position-442-${[i]}`},
+                    (() => {
+                        if (i === 1) {
+                            return [
+                                createElement('option', {value: "option1"}, "Goalkeeper"),
+                                createElement('option', {value: "option2"}, "Goalkeeper-libero"),
+                            ];
+                        } else if (i === 2 || i === 3 || i === 4 || i === 5) {
+                            return [
+                                createElement('option', {value: "option3"}, "Central Defender"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                            ];
+                        } else if (i === 7 || i === 8) {
+                            return [
+                                createElement('option', {value: "option3"}, "Central Midfielder"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                                createElement('option', {value: "option4"}, "Opcja 4")
+                            ];
+                        } else if (i === 6 || i === 9) {
+                            return [
+                                createElement('option', {value: "option3"}, "Winger"),
+                                createElement('option', {value: "option4"}, "Opcja 4")
+                            ];
+                        } else if (i === 10 || i === 11) {
+                            return [
+                                createElement('option', {value: "option3"}, "Advanced Forward"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                                createElement('option', {value: "option4"}, "Opcja 4")
+                            ];
+                        }
+                        return null;
+                    })()
+                );
+                arr.push(player, position);
+            }
+            return arr;
+        } else if (tactic.formation === "4-2-3-1") {
+            for (let i = 1; i <= 11; i++) {
+                const player = createElement(
+                    'img',
+                    {className: `formation-4231-${[i]}`, src: shirt3}
+                );
+                const position = createElement(
+                    'select',
+                    {className: `position-4231-${[i]}`},
+                    (() => {
+                        if (i === 1) {
+                            return [
+                                createElement('option', {value: "option1"}, "Goalkeeper"),
+                                createElement('option', {value: "option2"}, "Goalkeeper-libero"),
+                            ];
+                        } else if (i === 2 || i === 5) {
+                            return [
+                                createElement('option', {value: "option3"}, "Full Back"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                            ];
+                        } else if (i === 3 || i === 4) {
+                            return [
+                                createElement('option', {value: "option3"}, "Central Defender"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                            ];
+                        } else if (i === 6 || i === 7) {
+                            return [
+                                createElement('option', {value: "option3"}, "Central Midfielder"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                            ];
+                        } else if (i ===  8) {
+                            return [
+                                createElement('option', {value: "option3"}, "Advanced Playmaker"),
+                                createElement('option', {value: "option4"}, "Opcja 4")
+                            ];
+                        } else if (i === 9 || i === 10) {
+                            return [
+                                createElement('option', {value: "option3"}, "Winger"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                            ];
+                        } else if (i === 11) {
+                            return [
+                                createElement('option', {value: "option3"}, "Advanced Forward"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                            ];
+                        }
+                        return null;
+                    })()
+                );
+                arr.push(player, position);
+            }
+            return arr;
+            
+        }
+    }
+
     return (
         <>
             <div key={tactic.id} className="container">
                 <span className="tactic__wrapper__preview tactic__wrapper">
                     <h2 className="formation">Formation: {tactic.formation}</h2>
                     <main className="tactics__preview tactics">
-                        <section className="preview__pitch"></section>
+                        <section className="preview__pitch">
+                            {tactic.formation === '4-2-3-1' && generateElement()}
+                            {tactic.formation === '3-5-2' && generateElement()}
+                            {tactic.formation === '4-3-3' && generateElement()}
+                            {tactic.formation === '4-4-2' && generateElement()}
+                        </section>
                         <section className="options">
                             <label htmlFor="mentality" className="mentality option-font">Mentality</label>
                             <p className="mentality-select option-font">{tactic.mentality}</p>
