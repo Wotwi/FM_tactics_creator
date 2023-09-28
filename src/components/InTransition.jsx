@@ -1,6 +1,6 @@
 import React, {createContext, useState} from 'react';
 
-function InTransition({showInTransition, closeInTransition, counterPress, regroup, handleCounterPress, counter, holdShape, handleRegroup, handleCounter, handleHoldShape, distributeQuickly, setDistributeQuickly, slowPaceDown,  setSlowPaceDown, distributionType, setDistributionType, handleDistributeQuickly, handleSlowPaceDown, handleDistributionType}) {
+function InTransition({showInTransition, closeInTransition, counterPress, regroup, handleCounterPress, counter, holdShape, handleRegroup, handleCounter, handleHoldShape, distributeQuickly, setDistributeQuickly, slowPaceDown,  setSlowPaceDown, distributionType, setDistributionType, handleDistributeQuickly, handleSlowPaceDown, handleDistributionType, distributeToCentreBacks, distributeToFullBacks, distributeToFlanks, distributeToPlaymaker, distributeToTarget, distributeOverDefence, handleOverDefence, handleFlanks, handleTarget, handlePlaymaker, handleFullBacks, handleCentreBacks}) {
 
     return (
         <>
@@ -21,16 +21,16 @@ function InTransition({showInTransition, closeInTransition, counterPress, regrou
                     <button className={slowPaceDown ? "options-btn-active final-third-btn" : "options-btn final-third-btn"} onClick={handleSlowPaceDown}>Slow Pace Down</button>
 
                     <section className="small-pitch">
-                        <span className="oop-pitch-element">Distribute Over Opposition Defence</span>
+                        <span className={distributeOverDefence ?  "oop-pitch-element-active" : "oop-pitch-element"} onClick={handleOverDefence}>Distribute Over Opposition Defence</span>
 
-                        <span className="oop-pitch-element">Distribute To Flanks</span>
-                        <span className="oop-pitch-element">Distribute to Target...</span>
-                        <span className="oop-pitch-element">Distribute to Playmaker</span>
-                        <span className="oop-pitch-element">Distribute to Flanks</span>
+                        <span className={distributeToFlanks ? "oop-pitch-element-active" : "oop-pitch-element"} onClick={handleFlanks}>Distribute To Flanks</span>
+                        <span className={distributeToTarget ? "oop-pitch-element-active" : "oop-pitch-element"} onClick={handleTarget}>Distribute to Target...</span>
+                        <span className={distributeToPlaymaker ? "oop-pitch-element-active" : "oop-pitch-element"} onClick={handlePlaymaker}>Distribute to Playmaker</span>
+                        <span className={distributeToFlanks ? "oop-pitch-element-active" : "oop-pitch-element"} onClick={handleFlanks}>Distribute to Flanks</span>
 
-                        <span className="oop-pitch-element">Distribute to Full-Backs</span>
-                        <span className="oop-pitch-element">Distribute To Centre Backs</span>
-                        <span className="oop-pitch-element">Distribute to Full-Backs</span>
+                        <span className={distributeToFullBacks ? "oop-pitch-element-active" : "oop-pitch-element"} onClick={handleFullBacks}>Distribute to Full-Backs</span>
+                        <span className={distributeToCentreBacks ? "oop-pitch-element-active" : "oop-pitch-element"} onClick={handleCentreBacks}>Distribute To Centre Backs</span>
+                        <span className={distributeToFullBacks ? "oop-pitch-element-active" : "oop-pitch-element"} onClick={handleFullBacks}>Distribute to Full-Backs</span>
                     </section>
 
                     <h3 className="options-title">DISTRIBUTION TYPE</h3>

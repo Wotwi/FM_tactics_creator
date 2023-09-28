@@ -6,6 +6,7 @@ import Hero from "./components/Hero.jsx";
 import AllTactics from "./components/AllTactics.jsx";
 import Login from "./components/Login.jsx";
 import Register from "./components/Register.jsx";
+import TacticView from "./components/TacticView.jsx";
 
 function App() {
   return (
@@ -27,6 +28,9 @@ function App() {
                 </Route>
                 <Route path="/register">
                     <Register />
+                </Route>
+                <Route path="/tacticview/:id">
+                    <TacticView />
                 </Route>
             </Switch>    
         </Router>

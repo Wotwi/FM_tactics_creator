@@ -2,7 +2,7 @@ import React from 'react';
 import DribblingButtons from "./buttonsHandlers/DribblingButtons.jsx";
 import CreativeFreedomButtons from "./buttonsHandlers/CreativeFreedomButtons.jsx";
 
-function InPossession({showInPossession, widthRange, handleRange, approachPlayHandle, approachPlay, leftLapStates, handleLeftLap, handleElementClick, rightLapStates, handleRightLap, secondLineOptions, passRange, handlePass, tempoRange, handleTempo, timeWasteRange, handleTimeWaste, handleMiddle, playOutDef, handlePlayOutDef, finishing, handleFinishing, setPieces, playForSetPieces, dribbleLess, setDribbleLess, isSecondPressed, setIsSecondPressed, isMoreExpressive, setIsMoreExpressive, IsMoreDisciplined, setIsMoreDisciplined, closeInPossession }) {
+function InPossession({showInPossession, widthRange, handleRange, approachPlayHandle, approachPlay, leftLapStates, handleLeftLap, handleElementClick, rightLapStates, handleRightLap, secondLineOptions, passRange, handlePass, tempoRange, handleTempo, timeWasteRange, handleTimeWaste, handleMiddle, playOutDef, handlePlayOutDef, finishing, handleFinishing, setPieces, playForSetPieces, dribbleLess, setDribbleLess, isSecondPressed, setIsSecondPressed, isMoreExpressive, setIsMoreExpressive, IsMoreDisciplined, setIsMoreDisciplined, closeInPossession, handleCross, crossType }) {
     return (
         <>
             {showInPossession && <div className="commands-window">
@@ -93,10 +93,11 @@ function InPossession({showInPossession, widthRange, handleRange, approachPlayHa
                 </div>
                 <div className="options-section">
                     <h3 className="options-title final-third-title">FINAL THIRD</h3>
-                    <select className="cross-select" name="" id="">
+                    <select className="cross-select" value={crossType} onChange={handleCross}>
                         <option value="Low Crosses">Low Crosses</option>
                         <option value="Medium Crosses">Medium Crosses</option>
                         <option value="High Crosses">High Crosses</option>
+                        <option value="">Mix Crosses</option>
                     </select>
 
                     <section className="small-pitch final-third-pitch">

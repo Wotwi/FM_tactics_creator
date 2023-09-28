@@ -1,0 +1,31 @@
+.tactic__view__hdr {
+    color: #fff;
+    text-align: center;
+    font-size: 10rem;
+}
+
+.preview__pitch {
+    margin-top: 2.5rem;
+    width: 70rem;
+    height: 96.8rem;
+    background-image: url(../assets/pitch2.svg);
+    background-color: rgb(0, 125, 63);
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 2rem;
+    position: relative;
+};
+
+.tactic__wrapper__preview {
+    width: 70rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.tactics__preview {
+    display: flex;
+    margin-left: -15rem;
+    flex-direction: row-reverse;
+}

@@ -6,6 +6,7 @@ import SaveTactic from "./SaveTactic.jsx";
 import { useHistory } from "react-router-dom";
 import {db} from '../../firebase-config';
 import {collection, getDocs, addDoc} from 'firebase/firestore';
+import TacticView from "./TacticView.jsx";
 
 function CreateTactic() {
     const [selectedFormation, setSelectedFormation] = useState('');
@@ -32,6 +33,9 @@ function CreateTactic() {
     const [playOptionStates, setPlayOptionStates] = useState({})
 
     const [playOutDef, setPlayOutDef] = useState(false);
+
+    const [crossType, setCrossType] = useState('');
+    const [mentality, setMentality] = useState('standard');
 
     // InTransition
 
@@ -90,6 +94,7 @@ function CreateTactic() {
         }));
     };
 
+    
     // End of InTransition
 
     // OutOfPossession States
@@ -117,6 +122,14 @@ function CreateTactic() {
     const handleGetOnStuck = () => {
         setGetStuckIn(!getStuckIn);
         setStayOnFeet(false);
+    }
+
+    const handleCross = (e) => {
+        setCrossType(e.target.value)
+    }
+
+    const handleMentality = (e) => {
+        setMentality(e.target.value)
     }
 
     const generateArrows = () => {
@@ -454,6 +467,79 @@ function CreateTactic() {
             hitEarlyCrosses: (clickedOption === 'hitEarlyCrosses' && !prevState.hitEarlyCrosses) || (clickedOption === 'shootOnSight' && prevState.hitEarlyCrosses) ? true : false,
         }));
     };
+
+    // --------------------------------------------------------------------------------------
+
+    const [distributeToCentreBacks, setDistributeToCentreBacks] = useState(false);
+    const [distributeToFullBacks, setDistributeToFullBacks] = useState(false);
+    const [distributeToFlanks, setDistributeToFlanks] = useState(false);
+    const [distributeToPlaymaker, setDistributeToPlaymaker] = useState(false);
+    const [distributeToTarget, setDistributeToTarget] = useState(false);
+    const [distributeOverDefence, setDistributeOverDefence] = useState(false);
+
+    const handleCentreBacks = () => {
+        setDistributeToCentreBacks(!distributeToCentreBacks);
+        console.log(distributeToCentreBacks);
+
+        setDistributeToFlanks(false);
+        setDistributeToPlaymaker(false);
+        setDistributeToTarget(false);
+        setDistributeOverDefence(false);
+    }
+
+    const handleFullBacks = () => {
+        setDistributeToFullBacks(!distributeToFullBacks);
+        console.log(distributeToFullBacks);
+
+        setDistributeToFlanks(false);
+        setDistributeToPlaymaker(false);
+        setDistributeToTarget(false);
+        setDistributeOverDefence(false);
+    }
+    
+    const handleFlanks = () => {
+        setDistributeToFlanks(prevState => !prevState);
+        console.log(distributeToFlanks);
+
+        setDistributeToCentreBacks(false);
+        setDistributeToFullBacks(false);
+        setDistributeToPlaymaker(false);
+        setDistributeToTarget(false);
+        setDistributeOverDefence(false);
+    }
+
+    const handlePlaymaker = () => {
+        setDistributeToPlaymaker(!distributeToPlaymaker);
+        console.log(distributeToPlaymaker);
+
+        setDistributeToCentreBacks(false);
+        setDistributeToFullBacks(false);
+        setDistributeToFlanks(false);
+        setDistributeToTarget(false);
+        setDistributeOverDefence(false);
+    }
+
+    const handleTarget = () => {
+        setDistributeToTarget(!distributeToTarget);
+        console.log(distributeToTarget);
+
+        setDistributeToCentreBacks(false);
+        setDistributeToFullBacks(false);
+        setDistributeToPlaymaker(false);
+        setDistributeToFlanks(false);
+        setDistributeOverDefence(false);
+    }
+
+    const handleOverDefence = () => {
+        setDistributeOverDefence(!distributeOverDefence);
+        console.log(distributeOverDefence);
+
+        setDistributeToCentreBacks(false);
+        setDistributeToFullBacks(false);
+        setDistributeToPlaymaker(false);
+        setDistributeToFlanks(false);
+        setDistributeToTarget(false);
+    }
     
     //  save and cancel buttons handle
 
@@ -505,8 +591,20 @@ function CreateTactic() {
 	        leftLapStates,
             rightLapStates,
             finishing,
+
+            distributionType,
+            counter,
+            holdShape,
+            crossType,
+            mentality,
+
+            distributeToCentreBacks,
+            distributeToFlanks,
+            distributeToPlaymaker,
+            distributeToTarget,
+            distributeOverDefence,
+            distributeToFullBacks,
         })
-        console.log(tacticTitle, tacticDescription)
         history.push('/alltactics')
     }
 
@@ -527,7 +625,7 @@ function CreateTactic() {
                     <main className="tactics">
                         <section className="options">
                             <label htmlFor="mentality" className="mentality option-font">Mentality</label>
-                            <select name="mentality-select" className="mentality-select option-font" id="mentality">
+                            <select name="mentality-select" className="mentality-select option-font" id="mentality" value={mentality} onChange={handleMentality}>
                                 <option value="very defensive">very defensive</option>
                                 <option value="defensive">defensive</option>
                                 <option value="standard">standard</option>
@@ -559,6 +657,8 @@ function CreateTactic() {
                                     <p>{rightLapStates.underlapRight && "Under Lap Right"}</p>
                                     <p>{rightLapStates.overlapRight && "Over Lap Right"}</p>
 
+                                    <p>{crossType}</p>
+
                                     <p>{finishing.hitEarlyCrosses && "Hit Early Crosses"}</p>
                                     <p>{finishing.shootOnSight && "Shoot On Sight"}</p>
                                     <p>{finishing.ballIntoBox && "Ball Into Box"}</p>
@@ -577,22 +677,29 @@ function CreateTactic() {
                                     <p>{distributionType.throwItLong && "Throw It Long"}</p>
                                     <p>{distributionType.takeShortKicks && "Take Short Kicks"}</p>
                                     <p>{distributionType.takeLongKicks && "Take Long Kicks"}</p>
+                                    <p>{distributeToCentreBacks && "Distribute To Centre Backs"}</p>
+                                    <p>{distributeToFullBacks && "Distribute To Full Backs"}</p>
+                                    <p>{distributeToFlanks && "Distrtibute To Flanks"}</p>
+                                    <p>{distributeToPlaymaker && "Distribute To Playmaker"}</p>
+                                    <p>{distributeToTarget && "Distribute To Target"}</p>
+                                    <p>{distributeOverDefence && "Distribute Over Opposition Defence"}</p>
                                 </span>
                             </div>
                             <div className="out-of-possession option-font" onClick={openOutOfPossession}>
                                 <h3>OUT OF POSSESSION</h3>
-                                <p>{tighterMarking && "Tighter Marking"}</p>
-                                <p>{triggerPressRange === 0 && "Much Less Often"}</p>
-                                <p>{triggerPressRange === 1 && "Slightly Less Often"}</p>
-                                <p>{triggerPressRange === 2 && ""}</p>
-                                <p>{triggerPressRange === 3 && "More Often"}</p>
-                                <p>{triggerPressRange === 4 && "Much More Often"}</p>
-                                <p>{preventShortGK && "Prevent Short GK Distribution"}</p>
-                                <p>{stayOnFeet && "Stay On Feet"}</p>
-                                <p>{getStuckIn && "Get Stuck In"}</p>
-                                <p>{defensiveWidthRange === 0 && "Force Opposition Outside"}</p>
-                                <p>{defensiveWidthRange === 2 && "Force Opposition Inside"}</p>
-                                <p>{}</p>
+                                <span className="displayed-options">
+                                    <p>{tighterMarking && "Tighter Marking"}</p>
+                                    <p>{triggerPressRange === 0 && "Much Less Often"}</p>
+                                    <p>{triggerPressRange === 1 && "Slightly Less Often"}</p>
+                                    <p>{triggerPressRange === 2 && ""}</p>
+                                    <p>{triggerPressRange === 3 && "More Often"}</p>
+                                    <p>{triggerPressRange === 4 && "Much More Often"}</p>
+                                    <p>{preventShortGK && "Prevent Short GK Distribution"}</p>
+                                    <p>{stayOnFeet && "Stay On Feet"}</p>
+                                    <p>{getStuckIn && "Get Stuck In"}</p>
+                                    <p>{defensiveWidthRange === 0 && "Force Opposition Outside"}</p>
+                                    <p>{defensiveWidthRange === 2 && "Force Opposition Inside"}</p>
+                                </span>
                             </div>
                         </section>
                         <section className="pitch">
@@ -634,6 +741,8 @@ function CreateTactic() {
                                 IsMoreDisciplined={IsMoreDisciplined}
                                 setIsMoreDisciplined={setIsMoreDisciplined}
                                 closeInPossession={closeInPossession}
+                                crossType={crossType}
+                                handleCross={handleCross}
                             />
                             <InTransition
                                 showInTransition={showInTransition}
@@ -655,6 +764,19 @@ function CreateTactic() {
                                 handleDistributeQuickly={handleDistributeQuickly}
                                 handleSlowPaceDown={handleSlowPaceDown}
                                 handleDistributionType={handleDistributionType}
+
+                                distributeToCentreBacks={distributeToCentreBacks}
+                                distributeToFullBacks={distributeToFullBacks}
+                                distributeToFlanks={distributeToFlanks}
+                                distributeToPlaymaker={distributeToPlaymaker}
+                                distributeToTarget={distributeToTarget}
+                                distributeOverDefence={distributeOverDefence}
+                                handleOverDefence={handleOverDefence}
+                                handleFlanks={handleFlanks}
+                                handleTarget={handleTarget}
+                                handlePlaymaker={handlePlaymaker}
+                                handleFullBacks={handleFullBacks}
+                                handleCentreBacks={handleCentreBacks}
                             />
 
                             <OutOfPossession
@@ -687,6 +809,7 @@ function CreateTactic() {
                                 setTacticDescription={setTacticDescription}
                                 saveTactic={saveTactic}
                             />
+
                         </section>
                     </main>
                     <button className="btn" onClick={backToHero}>Cancel</button>

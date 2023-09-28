@@ -466,6 +466,72 @@
   }
 }
 
+.oop-pitch-element-active {
+  border: .1rem solid #008D1F;
+  background-color: rgba(3, 211, 55, 0.6);
+  font-family: $base-font;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  &:nth-child(1) {
+    position: absolute;
+    width: 90%;
+    height: 11%;
+    top: 1.7rem;
+  }
+  &:nth-child(2) {
+    position: absolute;
+    width: 29%;
+    height: 48%;
+    left: .95rem;
+    top: 5rem;
+  }
+  &:nth-child(3){
+    position: absolute;
+    width: 30%;
+    height: 20%;
+    top: 5rem;
+    left: 6.85rem;
+  }
+  &:nth-child(4) {
+    position: absolute;
+    width: 30%;
+    height: 27.5%;
+    top: 11rem;
+    left: 6.85rem;
+  }
+  &:nth-child(5) {
+    position: absolute;
+    position: absolute;
+    width: 29%;
+    height: 48%;
+    right: .95rem;
+    top: 5rem;
+  }
+  &:nth-child(6) {
+    position: absolute;
+    width: 30%;
+    height: 5rem;
+    top: 19.3rem;
+    left: .9rem;
+  }
+  &:nth-child(7) {
+    position: absolute;
+    width: 30%;
+    height: 5rem;
+    top: 19.3rem;
+  }
+  &:nth-child(8) {
+    position: absolute;
+    width: 30%;
+    height: 5rem;
+    top: 19.3rem;
+    right: .9rem;
+  }
+}
+
 .arrow-outside0 {
   width: 10%;
   height: 10%;

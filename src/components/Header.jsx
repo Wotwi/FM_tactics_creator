@@ -1,9 +1,11 @@
 import React from 'react';
 import { auth } from '../../firebase-config';
-import { onAuthStateChanged } from 'firebase/auth';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 
 function Header() {
+    let history = useHistory();
 
     const [user, setUser] = useState("");
 
@@ -12,6 +14,10 @@ function Header() {
             setUser(currentUser);
         })
     }, [])
+
+    const logout = async () => {
+        await signOut(auth)
+    }
 
     return (
         <>
@@ -24,12 +30,15 @@ function Header() {
                         <p className="nav__element">Your tactics</p>
                         <span className="account">
                             {user ? (
-                                <p className='nav__element'>Hello {user.email}!</p>
+                                <>
+                                    <p className='nav__element'>Hello {user.email}!</p>
+                                    <button className='logout__button' onClick={logout}>Log Out</button>
+                                </>
                             ) : (
-                                <div>
+                                <>
                                     <a href="/login" className="nav__element">Login</a>
                                     <a href="/register" className="nav__element">Register</a>
-                                </div>
+                                </>
                             )}
                             
                         </span>

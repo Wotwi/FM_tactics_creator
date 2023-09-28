@@ -13,6 +13,7 @@ function Hero(props) {
                     <li className="features-element">Saving tactics on your profile</li>
                     <li className="features-element">Sharing your tactics with others</li>
                     <li className="features-element">Viewing other users tactics</li>
+                    <li className="features-element">RWD</li>
                 </ul>
             </section>
         </>

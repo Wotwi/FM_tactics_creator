@@ -5,11 +5,12 @@
     .single__tactic {
         width: 50%;
         height: 10rem;
-        margin: 1rem;
+        margin: 2rem;
         background-color: #fff;
         display: flex;
-        // justify-content: center;
         align-items: center;
+        text-decoration: none;
+        color: black;
 
         .tactic__formation {
             font-family: $base-font;
