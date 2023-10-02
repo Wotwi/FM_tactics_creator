@@ -393,15 +393,21 @@ function CreateTactic() {
     }
 
     function openInPossession() {
-        setShowInPossession(true);
+        if (showInTransition === false && showOutOfPossession === false) {
+            setShowInPossession(true);
+        }
     }
 
     function openInTransition() {
-        setShowInTransition(true);
+        if (showInPossession === false && showOutOfPossession === false) {
+            setShowInTransition(true);
+        }
     }
 
     function openOutOfPossession() {
-        setShowOutOfPossession(true);
+        if (showInPossession === false && showInTransition === false) {
+            setShowOutOfPossession(true);
+        }
     }
 
     function closeInPossession() {
@@ -619,50 +625,54 @@ function CreateTactic() {
     }
 
     const saveTactic = async () => {
-        await addDoc(tacticsCollectionRef, {
-            title: tacticTitle,
-            description: tacticDescription,
-            formation: selectedFormation,
-            approachPlay,
-            playForSetPieces,
-            dribbleLess,
-            isSecondPressed,
-            isMoreExpressive,
-            IsMoreDisciplined,
-            widthRange,
-            passRange,
-            tempoRange,
-            timeWasteRange,
-            defensiveWidthRange,
-            triggerPressRange,
-            playOutDef,
-            counterPress,
-            regroup,
-            distributeQuickly,
-            slowPaceDown,
-            tighterMarking,
-            preventShortGK,
-            stayOnFeet,
-            getStuckIn,
-            secondLineOptions,
-	        leftLapStates,
-            rightLapStates,
-            finishing,
-
-            distributionType,
-            counter,
-            holdShape,
-            crossType,
-            mentality,
-
-            distributeToCentreBacks,
-            distributeToFlanks,
-            distributeToPlaymaker,
-            distributeToTarget,
-            distributeOverDefence,
-            distributeToFullBacks,
-        })
-        history.push('/alltactics')
+        if (selectedFormation === "" || tacticTitle === "") {
+            alert('Make sure you select a formation and enter a title.')
+        } else {
+            await addDoc(tacticsCollectionRef, {
+                title: tacticTitle,
+                description: tacticDescription,
+                formation: selectedFormation,
+                approachPlay,
+                playForSetPieces,
+                dribbleLess,
+                isSecondPressed,
+                isMoreExpressive,
+                IsMoreDisciplined,
+                widthRange,
+                passRange,
+                tempoRange,
+                timeWasteRange,
+                defensiveWidthRange,
+                triggerPressRange,
+                playOutDef,
+                counterPress,
+                regroup,
+                distributeQuickly,
+                slowPaceDown,
+                tighterMarking,
+                preventShortGK,
+                stayOnFeet,
+                getStuckIn,
+                secondLineOptions,
+                leftLapStates,
+                rightLapStates,
+                finishing,
+    
+                distributionType,
+                counter,
+                holdShape,
+                crossType,
+                mentality,
+    
+                distributeToCentreBacks,
+                distributeToFlanks,
+                distributeToPlaymaker,
+                distributeToTarget,
+                distributeOverDefence,
+                distributeToFullBacks,
+            })
+            history.push('/alltactics')
+        }
     }
 
     return (
@@ -674,7 +684,6 @@ function CreateTactic() {
                             className="formation-select" id="formations">
                         <option className="formation-select__item"></option>
                         <option className="formation-select__item" value="3-5-2">3-5-2</option>
-                        <option className="formation-select__item" value="4-2-2-2 DP Wąsko">4-2-2-2 DP Wąsko</option>
                         <option className="formation-select__item" value="4-2-3-1">4-2-3-1</option>
                         <option className="formation-select__item" value="4-3-3">4-3-3</option>
                         <option className="formation-select__item" value="4-4-2">4-4-2</option>
