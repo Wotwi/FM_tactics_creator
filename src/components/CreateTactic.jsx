@@ -9,6 +9,8 @@ import {collection, getDocs, addDoc} from 'firebase/firestore';
 import TacticView from "./TacticView.jsx";
 import shirt3 from "../assets/shirt3.png";
 import arrow1 from "../assets/arrow.png";
+import { auth } from '../../firebase-config';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 
 function CreateTactic() {
     const [selectedFormation, setSelectedFormation] = useState('');
@@ -532,6 +534,17 @@ function CreateTactic() {
     };
 
     // --------------------------------------------------------------------------------------
+    // Recognizing user
+
+    const [user, setUser] = useState("");
+
+    useEffect(() => {
+        onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+        })
+    }, [])
+
+    // -----------------------------------
 
     const [distributeToCentreBacks, setDistributeToCentreBacks] = useState(false);
     const [distributeToFullBacks, setDistributeToFullBacks] = useState(false);
@@ -670,6 +683,7 @@ function CreateTactic() {
                 distributeToTarget,
                 distributeOverDefence,
                 distributeToFullBacks,
+                author: user.email,
             })
             history.push('/alltactics')
         }

@@ -166,50 +166,7 @@ function TacticView({ selectedFormation }) {
                     'img',
                     {className: `formation-4231-${[i]}`, src: shirt3}
                 );
-                const position = createElement(
-                    'select',
-                    {className: `position-4231-${[i]}`},
-                    (() => {
-                        if (i === 1) {
-                            return [
-                                createElement('option', {value: "option1"}, "Goalkeeper"),
-                                createElement('option', {value: "option2"}, "Goalkeeper-libero"),
-                            ];
-                        } else if (i === 2 || i === 5) {
-                            return [
-                                createElement('option', {value: "option3"}, "Full Back"),
-                                createElement('option', {value: "option4"}, "Opcja 4"),
-                            ];
-                        } else if (i === 3 || i === 4) {
-                            return [
-                                createElement('option', {value: "option3"}, "Central Defender"),
-                                createElement('option', {value: "option4"}, "Opcja 4"),
-                            ];
-                        } else if (i === 6 || i === 7) {
-                            return [
-                                createElement('option', {value: "option3"}, "Central Midfielder"),
-                                createElement('option', {value: "option4"}, "Opcja 4"),
-                            ];
-                        } else if (i ===  8) {
-                            return [
-                                createElement('option', {value: "option3"}, "Advanced Playmaker"),
-                                createElement('option', {value: "option4"}, "Opcja 4")
-                            ];
-                        } else if (i === 9 || i === 10) {
-                            return [
-                                createElement('option', {value: "option3"}, "Winger"),
-                                createElement('option', {value: "option4"}, "Opcja 4"),
-                            ];
-                        } else if (i === 11) {
-                            return [
-                                createElement('option', {value: "option3"}, "Advanced Forward"),
-                                createElement('option', {value: "option4"}, "Opcja 4"),
-                            ];
-                        }
-                        return null;
-                    })()
-                );
-                arr.push(player, position);
+                arr.push(player);
             }
             return arr;
             
@@ -221,6 +178,7 @@ function TacticView({ selectedFormation }) {
             <div key={tactic.id} className="container">
                 <span className="tactic__wrapper__preview tactic__wrapper">
                     <h2 className="formation">Formation: {tactic.formation}</h2>
+                    <h2 className="formation">{tactic.author}</h2>
                     <main className="tactics__preview tactics">
                         <section className="preview__pitch">
                             {tactic.formation === '4-2-3-1' && generateElement()}
