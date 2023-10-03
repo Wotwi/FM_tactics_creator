@@ -7,6 +7,7 @@ import AllTactics from "./components/AllTactics.jsx";
 import Login from "./components/Login.jsx";
 import Register from "./components/Register.jsx";
 import TacticView from "./components/TacticView.jsx";
+import YourTactics from "./components/YourTactics.jsx";
 
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
                 </Route>
                 <Route path="/tacticview/:id">
                     <TacticView />
+                </Route>
+                <Route path="/yourtactics">
+                    <YourTactics />
                 </Route>
             </Switch>    
         </Router>

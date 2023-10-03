@@ -29,3 +29,21 @@
     margin-left: -15rem;
     flex-direction: row-reverse;
 }
+
+.delete__tactic {
+    font-family: $base-font;
+    font-weight: 900;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    width: 5%;
+    height: 10rem;
+    margin-top: 2rem;
+    margin-left: -1.9rem;
+    background-color: red;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 0 2rem 2rem 0;
+}

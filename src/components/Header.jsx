@@ -35,7 +35,7 @@ function Header() {
                             </>
                         )}
                         <a href="/alltactics" className="nav__element">All tactics</a>
-                        <p className="nav__element">Your tactics</p>
+                        <a className="nav__element" href="/yourtactics">Your tactics</a>
                         <span className="account">
                             {user ? (
                                 <>
