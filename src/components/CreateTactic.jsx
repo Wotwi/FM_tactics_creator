@@ -224,9 +224,11 @@ function CreateTactic() {
                             ];
                         } else if (i === 2 || i === 3 || i === 4) {
                             return [
-                                createElement('option', {value: "option3"}, "Central Back"),
-                                createElement('option', {value: "option4"}, "Opcja 4"),
-                                createElement('option', {value: "option4"}, "Opcja 4"),
+                                createElement('option', {value: "option3"}, "Central Defender"),
+                                createElement('option', {value: "option4"}, "Wide Centre-Back"),
+                                createElement('option', {value: "option5"}, "Ball Playing Defender"),
+                                createElement('option', {value: "option6"}, "No-Nonsense Centre Back"),
+                                createElement('option', {value: "option7"}, "Libero"),
                             ];
                         } else if (i === 6 || i === 7 || i === 8) {
                             return [
@@ -266,11 +268,19 @@ function CreateTactic() {
                         if (i === 1) {
                             return [
                                 createElement('option', {value: "option1"}, "Goalkeeper"),
-                                createElement('option', {value: "option2"}, "Goalkeeper-libero"),
+                                createElement('option', {value: "option2"}, "Sweeper Keeper"),
                             ];
-                        } else if (i === 2 || i === 3 || i === 4) {
+                        } else if (i === 3 || i === 4) {
                             return [
                                 createElement('option', {value: "option3"}, "Central Defender"),
+                                createElement('option', {value: "option4"}, "Wide Centre-Back"),
+                                createElement('option', {value: "option5"}, "Ball Playing Defender"),
+                                createElement('option', {value: "option6"}, "No-Nonsense Centre Back"),
+                                createElement('option', {value: "option7"}, "Libero"),
+                            ];
+                        } else if (i === 2 || i === 5) {
+                            return [
+                                createElement('option', {value: "option3"}, "Full-Back"),
                                 createElement('option', {value: "option4"}, "Opcja 4"),
                                 createElement('option', {value: "option4"}, "Opcja 4"),
                             ];
@@ -280,7 +290,13 @@ function CreateTactic() {
                                 createElement('option', {value: "option4"}, "Opcja 4"),
                                 createElement('option', {value: "option4"}, "Opcja 4")
                             ];
-                        } else if (i === 9 || i === 10 || i === 11) {
+                        } else if (i === 9 || i === 11) {
+                            return [
+                                createElement('option', {value: "option3"}, "Winger"),
+                                createElement('option', {value: "option4"}, "Opcja 4"),
+                                createElement('option', {value: "option4"}, "Opcja 4")
+                            ];
+                        } else if (i === 10) {
                             return [
                                 createElement('option', {value: "option3"}, "Advanced Forward"),
                                 createElement('option', {value: "option4"}, "Opcja 4"),
@@ -308,13 +324,20 @@ function CreateTactic() {
                                 createElement('option', {value: "option1"}, "Goalkeeper"),
                                 createElement('option', {value: "option2"}, "Goalkeeper-libero"),
                             ];
-                        } else if (i === 2 || i === 3 || i === 4 || i === 5) {
+                        } else if (i === 2 || i === 5) {
+                            return [
+                                createElement('option', {value: "option3"}, "Full-Back"),
+                                createElement('option', {value: "option4"}, "Wide Centre-Back"),
+                            ];
+                        } else if (i === 3 || i === 4) {
                             return [
                                 createElement('option', {value: "option3"}, "Central Defender"),
-                                createElement('option', {value: "option4"}, "Opcja 4"),
-                                createElement('option', {value: "option4"}, "Opcja 4"),
+                                createElement('option', {value: "option4"}, "Wide Centre-Back"),
+                                createElement('option', {value: "option5"}, "Ball Playing Defender"),
+                                createElement('option', {value: "option6"}, "No-Nonsense Centre Back"),
+                                createElement('option', {value: "option7"}, "Libero"),
                             ];
-                        } else if (i === 7 || i === 8) {
+                        }  else if (i === 7 || i === 8) {
                             return [
                                 createElement('option', {value: "option3"}, "Central Midfielder"),
                                 createElement('option', {value: "option4"}, "Opcja 4"),
