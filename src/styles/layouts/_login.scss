@@ -12,7 +12,7 @@
     color: $main-color;
     font-size: 4rem;
     margin-inline: 100%;
-    text-shadow: 4px 4px 8px rgba(0, 0, 0, 1);
+    // text-shadow: 4px 4px 8px rgba(0, 0, 0, 1);
 }
 
 .login__text {
@@ -21,7 +21,7 @@
     margin: 2rem;
     background-color: $main-color;
     color: black;
-    border-radius: .5rem;
+    border-radius: 5rem;
 }
 
 .login__btn {
@@ -38,6 +38,6 @@
     font-family: $base-font;
     margin-inline: 40%;
     font-size: 1.5rem;
-    text-shadow: 4px 4px 8px rgba(0, 0, 0, 1);
+    // text-shadow: 4px 4px 8px rgba(0, 0, 0, 1);
     margin-top: 1rem;
 }
