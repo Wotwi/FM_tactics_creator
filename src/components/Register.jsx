@@ -8,6 +8,7 @@ function Register(props) {
 
     const [registerEmail, setRegisterEmail] = useState("")
     const [registerPassword, setRegisterPassword] = useState("")
+    const [error, setError] = useState(null);
 
     const [user, setUser] = useState("");
 
@@ -18,6 +19,11 @@ function Register(props) {
     }, [])
 
     const register = async (e) => {
+        if (!registerEmail.includes('@')) {
+            window.alert('Wrong email address');
+            return;
+        }
+
         e.preventDefault();
         try {
             const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword)
