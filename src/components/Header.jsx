@@ -2,17 +2,27 @@ import React from 'react';
 import { auth } from '../../firebase-config';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { useState, useEffect } from 'react';
-import { useHistory } from "react-router-dom";
+import hamburger from "../assets/hamburger.png";
 
 function Header() {
-    let history = useHistory();
 
     const [user, setUser] = useState("");
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     useEffect(() => {
         onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
         })
+
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        }
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        }
     }, [])
 
     const logout = async () => {
@@ -24,33 +34,45 @@ function Header() {
             <header className="header">
                 <nav className="main__navigation">
                     <a className="logo" href="/">FM Tactics Creator</a>
-                    <span className="elements__wrapper">
-                        {user ? (
-                            <>
-                                <a href="/create" className="nav__element">Create tactic</a>
-                            </>
+                    {windowWidth < 420 ? (
+                            <img src={hamburger} className='hamburger'></img>
                         ) : (
-                            <>
-                                <a href='/login' className="nav__element">Create tactic</a>
-                            </>
+                            <span className="elements__wrapper">
+                                {user ? (
+                                    <>
+                                        <a href="/create" className="nav__element">Create tactic</a>
+                                    </>
+                                ) : (
+                                    <>
+                                        <a href='/login' className="nav__element">Create tactic</a>
+                                    </>
+                                )}
+                                <a href="/alltactics" className="nav__element">All tactics</a>
+                                {user ? (
+                                    <>
+                                        <a className="nav__element" href="/yourtactics">Your tactics</a>
+                                    </>
+                                ) : (
+                                    <>
+                                        <a href='/login' className="nav__element">Your tactics</a>
+                                    </>
+                                )}
+                                <span className="account">
+                                    {user ? (
+                                        <>
+                                            <p className='nav__element'>Hello {user.email}!</p>
+                                            <button className='logout__button' onClick={logout}>Log Out</button>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <a href="/login" className="nav__element">Login</a>
+                                            <a href="/register" className="nav__element">Register</a>
+                                        </>
+                                    )}
+                                    
+                                </span>
+                            </span>                            
                         )}
-                        <a href="/alltactics" className="nav__element">All tactics</a>
-                        <a className="nav__element" href="/yourtactics">Your tactics</a>
-                        <span className="account">
-                            {user ? (
-                                <>
-                                    <p className='nav__element'>Hello {user.email}!</p>
-                                    <button className='logout__button' onClick={logout}>Log Out</button>
-                                </>
-                            ) : (
-                                <>
-                                    <a href="/login" className="nav__element">Login</a>
-                                    <a href="/register" className="nav__element">Register</a>
-                                </>
-                            )}
-                            
-                        </span>
-                    </span>
                 </nav>
             </header>
         </>

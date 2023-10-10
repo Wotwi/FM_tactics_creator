@@ -44,3 +44,25 @@
   font-family: $base-font;
   color: $main-color;
 }
+
+
+@media (max-width: 420px) {
+  .header {
+    // background: rgb(181, 177, 187);
+    
+    .main__navigation {
+      .logo {
+        font-size: 2.3rem;
+        padding: 1rem;
+        width: 50%;
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  .hamburger {
+    width: 4rem;
+    height: 4rem;
+    margin-right: 1.5rem;
+  }
+}

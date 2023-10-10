@@ -41,3 +41,21 @@
     // text-shadow: 4px 4px 8px rgba(0, 0, 0, 1);
     margin-top: 1rem;
 }
+
+
+@media (max-width: 420px) {
+    .login__form {
+        padding: 10rem 0 0 0;
+    }
+    .login__text {
+        width: 20rem;
+    }
+    .login__btn {
+        margin-top: 3rem;
+    }
+    .login__note {
+        margin-top: 3rem;
+        width: 20rem;
+        text-align: center;
+    }
+  }
