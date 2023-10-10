@@ -49,6 +49,7 @@
 @media (max-width: 420px) {
   .header {
     // background: rgb(181, 177, 187);
+    position: relative;
     
     .main__navigation {
       .logo {
@@ -64,5 +65,30 @@
     width: 4rem;
     height: 4rem;
     margin-right: 1.5rem;
+    position: absolute;
+    right: 0;
+  }
+
+  .elements__wrapper {
+      position: absolute;
+      width: 100%;
+      top: 100%;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(90deg, rgba(77,37,140,1) 0%, rgba(16,6,27,1) 67%);
+      padding: 3%;
+
+    .nav__element {
+      margin: -1rem 1rem 2rem 1rem;
+      padding: .5rem;
+    }
+  }
+
+  .account {
+
+    .nav__element {
+      margin: 1rem;
+    }
   }
 }
