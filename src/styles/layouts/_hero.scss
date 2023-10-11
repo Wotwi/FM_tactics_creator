@@ -48,3 +48,28 @@
 .feature-done {
   text-decoration: line-through;
 }
+
+
+@media (max-width: 420px) {
+  .hero__wrapper {
+    height: 100vh;
+  }   
+  .container {
+    width: 100vw;
+  }
+  .hero__header {
+    font-size: 3rem;
+  }
+  .hero__content {
+    font-size: 1.8rem;
+    width: 85%;
+    padding: 2rem 0 2rem 0;
+  }
+  .features {
+    padding: 0;
+    margin: 1rem 0 1rem 0;
+  }
+  .features-element {
+    margin: .5rem 0 .5rem 0;
+  }
+}

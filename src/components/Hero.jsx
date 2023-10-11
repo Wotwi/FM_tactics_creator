@@ -10,7 +10,7 @@ function Hero(props) {
                 <h5 className="features">Upcoming features:</h5>
                 <ul className="features-ul">
                     <li className="features-element feature-done">Log in/log out</li>
-                    <li className="features-element">Saving tactics on your profile</li>
+                    <li className="features-element feature-done">Saving tactics on your profile</li>
                     <li className="features-element feature-done">Sharing your tactics with others</li>
                     <li className="features-element feature-done">Viewing other users tactics</li>
                     <li className="features-element">RWD</li>
